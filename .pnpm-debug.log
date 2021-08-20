@@ -1,0 +1,1988 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 22,
+    "total": 22,
+    "workspacePrefix": "/Users/Panoply/Sites/brixtol/serverless"
+  },
+  "1 warn pnpm": {
+    "message": "There are cyclic workspace dependencies",
+    "prefix": "/Users/Panoply/Sites/brixtol/serverless"
+  },
+  "2 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "@brixtol/currency-symbol-placements",
+      "version": "0.1.3",
+      "description": "Mappings for Currency Symbol placements using currency.js patterns",
+      "author": "Nίκος Σαβίδης <nicos@brixtoltextiles.com>",
+      "license": "MIT",
+      "main": "./package/currency-symbol-placements.cjs.js",
+      "module": "./package/currency-symbol-placements.es.js",
+      "types": "index.d.ts",
+      "keywords": [
+        "currency",
+        "mappings",
+        "country",
+        "3166-1 alpha-2",
+        "ISO 4217"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/brixtol/currency-symbol-placements"
+      },
+      "bugs": {
+        "url": "https://github.com/brixtol/currency-symbol-placements"
+      },
+      "engines": {
+        "pnpm": ">=5"
+      },
+      "scripts": {
+        "dev": "rollup -c -w",
+        "build": "rollup -c --environment prod",
+        "test": "ava --watch --verbose"
+      },
+      "ava": {
+        "require": [
+          "esm"
+        ],
+        "files": [
+          "test/*.js"
+        ],
+        "concurrency": 5
+      },
+      "devDependencies": {
+        "@brixtol/rollup-utils": "workspace:^0.2.0",
+        "@rollup/plugin-commonjs": "^17.1.0",
+        "esm": "^3.2.25",
+        "rollup": "^2.38.1",
+        "rollup-plugin-filesize": "^9.1.0",
+        "rollup-plugin-terser": "^7.0.2"
+      },
+      "peerDependencies": {
+        "esm": "^3.2.25",
+        "rollup": "^2.26.11"
+      }
+    },
+    "prefix": "/Users/Panoply/Sites/brixtol/serverless/packages/currency-symbol-placements"
+  },
+  "3 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "@brixtol/eslint-config-javascript",
+      "version": "2.1.2",
+      "description": "ESLint configuration JavaScript style guide for Brixtol Textiles",
+      "author": "Νίκος Σαβίδης <nicos@brixtoltextiles.com>",
+      "license": "MIT",
+      "main": "index.js",
+      "keywords": [
+        "eslint",
+        "eslintconfig",
+        "config",
+        "brixtol",
+        "styleguide"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/brixtol/eslint-config-javascript"
+      },
+      "bugs": {
+        "url": "https://github.com/brixtol/eslint-config-javascript/issues"
+      },
+      "engines": {
+        "pnpm": ">=5"
+      },
+      "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+      },
+      "dependencies": {
+        "@babel/eslint-parser": "^7.13.14",
+        "@babel/eslint-plugin": "^7.13.16",
+        "babel-plugin-module-resolver": "^4.1.0",
+        "eslint": "^7.23.0",
+        "eslint-config-standard": "^16.0.2",
+        "eslint-import-resolver-babel-module": "^5.2.0",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-promise": "^4.3.1"
+      },
+      "devDependencies": {
+        "@brixtol/rollup-utils": "workspace:^0.2.0"
+      }
+    },
+    "prefix": "/Users/Panoply/Sites/brixtol/serverless/packages/eslint-config-javascript"
+  },
+  "4 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "@brixtol/eslint-config-typescript",
+      "version": "1.0.0",
+      "description": "ESLint configuration style guide for TypeScript projects consumed by Brixtol Textiles",
+      "author": "Νίκος Σαβίδης <nicos@brixtoltextiles.com>",
+      "license": "MIT",
+      "main": "index.js",
+      "keywords": [
+        "eslint",
+        "eslintconfig",
+        "config",
+        "brixtol",
+        "styleguide"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/brixtol/eslint-config-typescript"
+      },
+      "bugs": {
+        "url": "https://github.com/brixtol/eslint-config-typescript/issues"
+      },
+      "engines": {
+        "pnpm": ">=5"
+      },
+      "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+      },
+      "devDependencies": {
+        "@brixtol/rollup-utils": "workspace:^0.2.0",
+        "@liquify/eslint-config": "^0.1.0",
+        "@typescript-eslint/eslint-plugin": "^4.29.0",
+        "@typescript-eslint/parser": "^4.29.0",
+        "eslint": "^7.32.0"
+      },
+      "peerDependencies": {
+        "@liquify/eslint-config": "^0.1.0",
+        "@typescript-eslint/eslint-plugin": "4",
+        "@typescript-eslint/parser": "^4.2.0",
+        "eslint": "^7.10.0"
+      }
+    },
+    "prefix": "/Users/Panoply/Sites/brixtol/serverless/packages/eslint-config-typescript"
+  },
+  "5 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "@brixtol/prettier-config",
+      "version": "1.0.3",
+      "description": "Prettier configuration consumed by Brixtol Textiles",
+      "main": "index.js",
+      "author": "Νίκος Σαβίδης <nicos@brixtoltextiles.com>",
+      "license": "MIT",
+      "keywords": [
+        "prettier",
+        "prettierconfig",
+        "config",
+        "brixtol",
+        "formatting"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/brixtol/prettier-config"
+      },
+      "bugs": {
+        "url": "https://github.com/brixtol/prettier-config/issues"
+      },
+      "engines": {
+        "pnpm": ">=5"
+      },
+      "devDependencies": {
+        "@brixtol/rollup-utils": "workspace:^0.2.0",
+        "prettier": "^2.2.1",
+        "prettier-plugin-toml": "^0.3.1"
+      },
+      "peerDependencies": {
+        "prettier": "^2.1.1",
+        "prettier-plugin-toml": "^0.3.1"
+      }
+    },
+    "prefix": "/Users/Panoply/Sites/brixtol/serverless/packages/prettier-config"
+  },
+  "6 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "@brixtol/rollup-utils",
+      "version": "0.2.0",
+      "description": "Rollup plugin utilities for working with the Brixtol Textiles monorepo codebase",
+      "author": {
+        "name": "Νίκος Σαβίδης ",
+        "email": "n@brixtol.com",
+        "url": "https://brixtoltextiles.com"
+      },
+      "license": "MIT",
+      "types": "package/index.d.ts",
+      "main": "package/index.js",
+      "exports": {
+        "require": "./package/index.js",
+        "import": "./package/index.mjs"
+      },
+      "private": false,
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/brixtol/rollup-plugin-utils"
+      },
+      "bugs": {
+        "url": "https://github.com/brixtol/rollup-plugin-utils/issues"
+      },
+      "scripts": {
+        "dev": "rollup -c -w",
+        "build": "rollup -c --environment prod",
+        "test": "echo \"Error: no test specified\" && exit 1"
+      },
+      "release": {
+        "branches": [
+          "master",
+          "next"
+        ]
+      },
+      "devDependencies": {
+        "@brixtol/prettier-config": "workspace:^1.0.3",
+        "@brixtol/rollup-utils": "workspace:^0.2.0",
+        "@rollup/plugin-beep": "^0.2.0",
+        "@rollup/plugin-commonjs": "^17.1.0",
+        "@types/jsonminify": "^0.4.1",
+        "chalk": "^4.1.2",
+        "rollup-plugin-copy": "^3.4.0",
+        "rollup-plugin-delete": "^2.0.0",
+        "rollup-plugin-terser": "^7.0.2",
+        "types-eslintrc": "^1.0.3"
+      },
+      "dependencies": {
+        "fs-extra": "^9.1.0",
+        "jsonminify": "^0.4.1",
+        "strip-indent": "^3.0.0",
+        "strip-json-comments": "^3.1.1"
+      }
+    },
+    "prefix": "/Users/Panoply/Sites/brixtol/serverless/packages/rollup-utils"
+  },
+  "7 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "@brixtol/cryptographer",
+      "version": "0.1.2",
+      "description": "Encrypt and decrypt strings, numbers and objects",
+      "author": "Nikolas Savvidis <nicos@gmx.com>",
+      "license": "MIT",
+      "created": "06-10-2020",
+      "module": "package/index.es.js",
+      "main": "package/index.cjs.js",
+      "types": "index.d.ts",
+      "private": false,
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/brixtol/cryptographer.git"
+      },
+      "bugs": {
+        "url": "https://github.com/brixtol/cryptographer/issues"
+      },
+      "scripts": {
+        "watch": "rollup -c -w",
+        "build": "rollup -c --environment prod",
+        "pack": "cd versions; pnpm pack ../ && cd ..",
+        "test": "ava --watch --verbose"
+      },
+      "ava": {
+        "require": [
+          "esm"
+        ],
+        "files": [
+          "test/**/*"
+        ],
+        "concurrency": 5
+      },
+      "devDependencies": {
+        "@brixtol/eslint-config-javascript": "workspace:^2.0.1",
+        "@brixtol/prettier-config": "workspace:^1.0.3",
+        "@brixtol/rollup-utils": "workspace:^0.2.0",
+        "@rollup/plugin-commonjs": "^17.1.0",
+        "ava": "^3.15.0",
+        "chalk": "^4.1.0",
+        "esm": "^3.2.25",
+        "rollup-plugin-terser": "^7.0.2"
+      },
+      "peerDependencies": {
+        "ava": "^3.13.0",
+        "esm": "^3.2.25",
+        "rollup": "^2.26.11"
+      }
+    },
+    "prefix": "/Users/Panoply/Sites/brixtol/serverless/packages/cryptographer"
+  },
+  "8 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "@brixtol/pjax",
+      "version": "0.2.0-beta.1",
+      "private": false,
+      "description": "A modern next generation pjax solution for SSR web applications",
+      "author": "ΝΙΚΟΛΑΣ ΣΑΒΒΙΔΗΣ",
+      "owner": "BRIXTOL TEXTILES",
+      "license": "MIT",
+      "type": "module",
+      "types": "./package/@types/index.d.ts",
+      "main": "./package/pjax.esm.js",
+      "module": "./package/pjax.esm.js",
+      "browser": "./package/pjax.umd.js",
+      "scripts": {
+        "dev": "rollup -c -w",
+        "build": "rollup -c --environment prod",
+        "deploy": "pnpm run build && netlify deploy -p",
+        "test": "ava --color --verbose --watch --timeout=2m"
+      },
+      "browserslist": [
+        "extends @brixtol/browserslist-config"
+      ],
+      "prettier": "@brixtol/prettier-config",
+      "eslintConfig": {
+        "extends": [
+          "@brixtol/eslint-config-typescript"
+        ],
+        "rules": {
+          "multiline-ternary": "off"
+        }
+      },
+      "ava": {
+        "files": [
+          "tests/shopify.js"
+        ],
+        "require": [
+          "esm"
+        ]
+      },
+      "esm": {
+        "cjs": true
+      },
+      "dependencies": {
+        "detect-it": "^4.0.1",
+        "event-from": "^1.0.0",
+        "history": "^5.0.0",
+        "loadjs": "^4.2.0",
+        "matchit": "^1.1.0",
+        "mergerino": "^0.4.0",
+        "nanoid": "^3.1.23",
+        "nprogress": "^0.2.0"
+      },
+      "devDependencies": {
+        "@brixtol/eslint-config-typescript": "workspace:^1.0.0",
+        "@brixtol/prettier-config": "workspace:^1.0.3",
+        "@brixtol/rollup-utils": "workspace:^0.2.0",
+        "@rollup/plugin-alias": "^3.1.5",
+        "@rollup/plugin-node-resolve": "^13.0.4",
+        "@rollup/plugin-replace": "^3.0.0",
+        "@types/loadjs": "^4.0.1",
+        "@types/nprogress": "^0.2.0",
+        "ava": "^3.15.0",
+        "esm": "^3.2.25",
+        "rollup": "^2.56.2",
+        "rollup-plugin-filesize": "^9.1.1",
+        "rollup-plugin-livereload": "^2.0.5",
+        "rollup-plugin-node-polyfills": "^0.2.1",
+        "rollup-plugin-typescript2": "^0.30.0",
+        "typescript": "^4.3.5"
+      },
+      "peerDependencies": {
+        "ava": "^3.13.0",
+        "esm": "^3.2.25",
+        "rollup": "^2.26.11"
+      }
+    },
+    "prefix": "/Users/Panoply/Sites/brixtol/serverless/packages/pjax"
+  },
+  "9 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "@brixtol/rollup-html",
+      "version": "0.1.0",
+      "description": "Hard fork of @rollup/html with some adjustments to better fit bundle processing",
+      "author": "ΝΙΚΟΛΑΣ ΣΑΒΒΙΔΗΣ",
+      "owner": "SISSEL SAAS",
+      "license": "MIT",
+      "main": "./package/index.cjs.js",
+      "types": "index.d.ts",
+      "private": false,
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/brixtol/rollup-html"
+      },
+      "bugs": {
+        "url": "https://github.com/brixtol/rollup-html/issues"
+      },
+      "scripts": {
+        "dev": "rollup -c -w",
+        "build": "rollup -c --environment prod",
+        "test": "echo \"Error: no test specified\" && exit 1"
+      },
+      "prettier": "@brixtol/prettier-config",
+      "eslintConfig": {
+        "extends": [
+          "@brixtol/eslint-config-javascript"
+        ]
+      },
+      "ava": {
+        "files": [
+          "tests/**/*"
+        ],
+        "concurrency": 5,
+        "require": [
+          "esm"
+        ]
+      },
+      "esm": {
+        "cjs": true
+      },
+      "devDependencies": {
+        "@brixtol/eslint-config-javascript": "workspace:^2.0.1",
+        "@brixtol/prettier-config": "workspace:^1.0.3",
+        "@brixtol/rollup-utils": "workspace:^0.2.0",
+        "@rollup/plugin-commonjs": "^18.0.0",
+        "rollup-plugin-terser": "^7.0.2"
+      },
+      "peerDependencies": {
+        "ava": "^3.13.0",
+        "esm": "^3.2.25"
+      },
+      "dependencies": {
+        "fs-extra": "^9.1.0",
+        "html-minifier": "^4.0.0",
+        "svgstore": "^3.0.0-2"
+      }
+    },
+    "prefix": "/Users/Panoply/Sites/brixtol/serverless/packages/rollup-html"
+  },
+  "10 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "@brixtol/sdk",
+      "version": "0.1.0",
+      "private": false,
+      "description": "SDK for interfacing with the Brixtol API",
+      "author": "ΝΙΚΟΛΑΣ ΣΑΒΒΙΔΗΣ",
+      "owner": "SISSEL SAAS",
+      "license": "see LICENSE.txt",
+      "types": "types/index.d.ts",
+      "scripts": {
+        "dev": "rollup -c -w",
+        "db:up": "node -r esm src/database/index.js",
+        "build": "rollup -c --environment prod",
+        "deploy": "pnpm run build && netlify deploy -p",
+        "test": "ava --color --verbose --watch --timeout=2m"
+      },
+      "prettier": "@brixtol/prettier-config",
+      "eslintConfig": {
+        "extends": [
+          "@brixtol/eslint-config-javascript"
+        ]
+      },
+      "ava": {
+        "files": [
+          "tests/shopify.js"
+        ],
+        "require": [
+          "esm"
+        ]
+      },
+      "esm": {
+        "cjs": true
+      },
+      "dependencies": {
+        "dotenv": "^8.2.0",
+        "faunadb": "^4.0.2",
+        "google-auth-library": "^6.1.6",
+        "isomorphic-fetch": "^3.0.0",
+        "language-name-map": "^0.3.0",
+        "p-map": "^4.0.0",
+        "p-throttle": "^4.0.0",
+        "pusher": "^4.0.2",
+        "query-string": "^6.13.8",
+        "shopify-api-node": "^3.6.1",
+        "urlencode": "^1.1.0"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.12.10",
+        "@babel/preset-env": "^7.12.11",
+        "@brixtol/eslint-config-javascript": "workspace:^2.0.1",
+        "@brixtol/prettier-config": "workspace:^1.0.3",
+        "@brixtol/rollup-utils": "workspace:^0.2.0",
+        "@rollup/plugin-alias": "^3.1.2",
+        "@rollup/plugin-babel": "^5.2.3",
+        "@rollup/plugin-node-resolve": "^11.1.1",
+        "@rollup/plugin-replace": "^2.3.4",
+        "@types/aws-lambda": "^8.10.71",
+        "@types/facebook-js-sdk": "^3.3.1",
+        "@types/isomorphic-fetch": "^0.0.35",
+        "@types/lodash": "^4.14.168",
+        "@types/mithril": "^2.0.6",
+        "ava": "^3.15.0",
+        "esm": "^3.2.25",
+        "rollup": "^2.38.1",
+        "rollup-plugin-livereload": "^2.0.0",
+        "rollup-plugin-node-polyfills": "^0.2.1"
+      },
+      "peerDependencies": {
+        "ava": "^3.13.0",
+        "esm": "^3.2.25",
+        "rollup": "^2.26.11"
+      }
+    },
+    "prefix": "/Users/Panoply/Sites/brixtol/serverless/packages/sdk"
+  },
+  "11 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "@brixtol/synth-theme",
+      "version": "0.1.0",
+      "private": true,
+      "description": "Consturct UI theme for the synth serverless administration application",
+      "author": "ΝΙΚΟΛΑΣ ΣΑΒΒΙΔΗΣ",
+      "owner": "SISSEL SAAS",
+      "license": "see LICENSE.txt",
+      "main": "package/index.js",
+      "types": "package/index.d.ts",
+      "files": [
+        "./package/synth.min.js"
+      ],
+      "scripts": {
+        "dev": "rollup -c -w",
+        "svgs": "node bin/svgs.js",
+        "build": "rollup -c",
+        "ts": "tsc -p tsconfig.json"
+      },
+      "prettier": "@brixtol/prettier-config",
+      "eslintConfig": {
+        "extends": [
+          "@brixtol/eslint-config-typescript"
+        ]
+      },
+      "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not ie <= 10"
+      ],
+      "devDependencies": {
+        "@brixtol/eslint-config-typescript": "workspace:^1.0.0",
+        "@brixtol/prettier-config": "workspace:^1.0.3",
+        "@brixtol/rollup-utils": "workspace:^0.2.0",
+        "@rollup/plugin-typescript": "^8.1.1",
+        "@rollup/plugin-virtual": "^2.0.3",
+        "@types/classnames": "^2.2.11",
+        "@types/mithril": "^2.0.6",
+        "@wessberg/rollup-plugin-ts": "^1.3.8",
+        "autoprefixer": "^10.2.4",
+        "chalk": "^4.1.0",
+        "cheerio": "^1.0.0-rc.5",
+        "classnames": "^2.2.6",
+        "construct-ui": "^0.3.0",
+        "cssnano": "^4.1.10",
+        "feather-icons": "^4.28.0",
+        "fs-extra": "^9.1.0",
+        "html-minifier": "^4.0.0",
+        "lodash": "^4.17.20",
+        "mithril": "^2.0.4",
+        "nanosvg": "^1.5.4",
+        "postcss": "^8.2.4",
+        "rollup-plugin-scss": "^2.6.1",
+        "rollup-plugin-terser": "^7.0.2",
+        "rollup-plugin-ts": "^1.3.7",
+        "rollup-plugin-typescript2": "^0.29.0",
+        "sass-breakpoints": "^2.1.0",
+        "svg-parser": "^2.0.4",
+        "typescript": "^4.1.3"
+      },
+      "peerDependencies": {
+        "construct-ui": "^0.2.9",
+        "mithril": "^2.0.4"
+      },
+      "dependencies": {
+        "@uppy/core": "^1.16.0",
+        "@uppy/dashboard": "^1.16.0",
+        "mithril-range": "^1.0.0",
+        "qrcanvas": "^3.1.2",
+        "vanilla-colorful": "^0.5.3"
+      }
+    },
+    "prefix": "/Users/Panoply/Sites/brixtol/serverless/packages/synth-theme"
+  },
+  "12 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "@brixtol/tsconfig",
+      "version": "1.0.0",
+      "description": "Brixtol Textiles TypeScript Configuration",
+      "homepage": "https://liquify.dev",
+      "author": {
+        "name": "Νίκος Σαβίδης ",
+        "email": "n@brixtol.com",
+        "url": "https://brixtoltextiles.com"
+      },
+      "license": "MIT",
+      "main": "tsconfig.json",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/brixtol/tsconfig"
+      },
+      "bugs": {
+        "url": "https://github.com/brixtol/tsconfig"
+      },
+      "devDependencies": {
+        "@brixtol/rollup-utils": "workspace:^0.2.0"
+      }
+    },
+    "prefix": "/Users/Panoply/Sites/brixtol/serverless/packages/tsconfig"
+  },
+  "13 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "@brixtol/webshop-ui",
+      "version": "0.0.0",
+      "description": "Brixtol textiles webshop ui example environment",
+      "author": "Nikolas Savvidis <nicos@gmx.com>",
+      "license": "ISC",
+      "main": ".eleventy.js",
+      "private": true,
+      "scripts": {
+        "dev": "npm-run-all clean make --parallel styles 11ty js",
+        "11ty:build": "pnpx eleventy",
+        "11ty": "pnpx eleventy --serve --watch",
+        "js": "js -c -w",
+        "js:prod": "js -c --environment prod",
+        "styles": "node-sass-chokidar --include-path ./node_modules/ ./docs/style/stylesheet.scss --watch --output ./public/assets/ --source-map true --source-map-contents true && postcss ./public/assets/*.css --replace",
+        "styles:prod": "node-sass-chokidar ./src/style/ --output public/assets/ && postcss ./public/assets/*.css --replace",
+        "make": "mkdirp ./public && mkdirp ./public/assets && mkdirp ./public/assets",
+        "clean": "rimraf public",
+        "test": "echo \"Error: no test specified\" && exit 1"
+      },
+      "repository": {
+        "url": "https://github.com/brixtol/webshop-ui"
+      },
+      "dependencies": {
+        "bootstrap": "^4.6.0",
+        "countup.js": "^2.0.7",
+        "mithril": "^2.0.4",
+        "stickybits": "^3.7.8",
+        "stimulus": "^2.0.0",
+        "turbolinks": "^5.2.0"
+      },
+      "devDependencies": {
+        "@11ty/eleventy": "^0.11.1",
+        "@babel/plugin-proposal-class-properties": "^7.12.13",
+        "@babel/plugin-proposal-optional-chaining": "^7.12.13",
+        "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+        "@babel/plugin-transform-runtime": "^7.12.15",
+        "@babel/preset-env": "^7.12.13",
+        "@brixtol/rollup-utils": "workspace:^0.2.0",
+        "@rollup/plugin-babel": "^5.2.3",
+        "@rollup/plugin-buble": "^0.21.3",
+        "@rollup/plugin-node-resolve": "^11.1.1",
+        "autoprefixer": "^10.2.4",
+        "babel-eslint": "^10.1.0",
+        "cssnano": "^4.1.10",
+        "eleventy-plugin-svg-contents": "^0.7.0",
+        "eslint": "^7.19.0",
+        "eslint-plugin-babel": "^5.3.1",
+        "light-server": "^2.9.1",
+        "mkdirp": "^1.0.4",
+        "node-sass-chokidar": "^1.5.0",
+        "npm-run-all": "^4.1.5",
+        "postcss-cli": "^8.3.1",
+        "prettier": "^2.2.1",
+        "prettier-stylelint": "^0.4.2",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.38.5",
+        "rollup-plugin-terser": "^7.0.2",
+        "stylelint": "^13.9.0",
+        "stylelint-config-rational-order": "^0.1.2",
+        "stylelint-scss": "^3.18.0",
+        "svgo": "^1.3.2"
+      },
+      "peerDependencies": {
+        "@11ty/eleventy": "^0.11.0",
+        "cssnano": "^4.1.10",
+        "eslint": "^7.2.0",
+        "prettier": "^2.0.5",
+        "rollup": "^2.15.0",
+        "stylelint": "^13.6.0"
+      }
+    },
+    "prefix": "/Users/Panoply/Sites/brixtol/serverless/packages/webshop-ui"
+  },
+  "14 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "brixtol-theme",
+      "version": "0.0.1",
+      "description": "NPM Packages for the Brixtol Textiles webshop",
+      "scripts": {
+        "gulp": "gulp",
+        "sync": "sync",
+        "js": "rollup -c -w",
+        "js:prod": "rollup -c -w --environment prod"
+      },
+      "shopifysync": {
+        "targets": [
+          {
+            "target_name": "development",
+            "domain": "brixtol",
+            "theme_name": "Development",
+            "theme_id": 120346116176
+          },
+          {
+            "target_name": "production",
+            "domain": "brixtol",
+            "theme_name": "Production",
+            "theme_id": 120346116176
+          }
+        ]
+      },
+      "browserslist": [
+        "defaults"
+      ],
+      "prettier": "@brixtol/prettier-config",
+      "eslintConfig": {
+        "extends": [
+          "@brixtol/eslint-config-typescript"
+        ],
+        "rules": {
+          "no-redeclare": "off"
+        }
+      },
+      "typings": "./source/scripts/types",
+      "devDependencies": {
+        "@babel/register": "^7.14.5",
+        "@brixtol/eslint-config-typescript": "workspace:^1.0.0",
+        "@brixtol/prettier-config": "workspace:^1.0.3",
+        "@brixtol/rollup-utils": "workspace:^0.2.0",
+        "@rollup/plugin-beep": "^0.2.0",
+        "@rollup/plugin-commonjs": "^20.0.0",
+        "@rollup/plugin-node-resolve": "^13.0.4",
+        "@rollup/plugin-typescript": "^8.2.5",
+        "@types/facebook-js-sdk": "^3.3.4",
+        "@types/js-cookie": "^2.2.7",
+        "@types/lozad": "^1.16.1",
+        "assign-deep": "^1.0.1",
+        "browser-sync": "^2.27.5",
+        "chalk": "^4.1.2",
+        "del": "^6.0.0",
+        "domutils": "^2.7.0",
+        "esm": "^3.2.25",
+        "fancy-log": "^1.3.3",
+        "figlet": "^1.5.0",
+        "gulp": "^4.0.2",
+        "gulp-changed": "^4.0.3",
+        "gulp-cssnano": "^2.1.3",
+        "gulp-execa": "^3.0.2",
+        "gulp-flatten": "^0.4.0",
+        "gulp-fn": "^0.0.3",
+        "gulp-html-minifier-terser": "^6.0.1",
+        "gulp-htmlmin": "^5.0.1",
+        "gulp-if": "^3.0.0",
+        "gulp-imagemin": "^7.1.0",
+        "gulp-jsonminify": "^1.1.0",
+        "gulp-notify": "^4.0.0",
+        "gulp-purgecss": "^4.0.3",
+        "gulp-rename": "^2.0.0",
+        "gulp-replace": "^1.1.3",
+        "gulp-sass": "^5.0.0",
+        "gulp-size": "^4.0.1",
+        "gulp-svg-sprite": "^1.5.0",
+        "gulp-svgmin": "^4.0.1",
+        "gulp-zip": "^5.1.0",
+        "minimist": "^1.2.5",
+        "node-sass": "^6.0.1",
+        "plugin-error": "^1.0.1",
+        "prettier": "^2.3.2",
+        "prettier-eslint": "^13.0.0",
+        "prettier-stylelint": "^0.4.2",
+        "rollup": "^2.56.0",
+        "rollup-plugin-filesize": "^9.1.1",
+        "rollup-plugin-iife": "^0.5.0",
+        "rollup-plugin-includepaths": "^0.2.4",
+        "rollup-plugin-nodent": "^0.2.2",
+        "rollup-plugin-sizes": "^1.0.4",
+        "rollup-plugin-terser": "^7.0.2",
+        "rollup-plugin-typescript2": "^0.30.0",
+        "rollup-plugin-uglify": "^6.0.4",
+        "shopify-sync": "^1.0.0-beta.2",
+        "strip-indent": "^4.0.0",
+        "stylelint": "^13.13.1",
+        "stylelint-config-rational-order": "^0.1.2",
+        "stylelint-scss": "^3.20.1",
+        "svgo": "2.3.1",
+        "through2": "^4.0.2",
+        "time-stamp": "^2.2.0",
+        "typescript": "^4.3.5"
+      },
+      "dependencies": {
+        "@accede-web/tablist": "^2.0.1",
+        "@brixtol/currency-symbol-placements": "workspace:^0.1.2",
+        "@shopify/theme-currency": "^4.1.1",
+        "@shopify/theme-sections": "^4.1.1",
+        "@types/store": "^2.0.2",
+        "accounting": "^0.4.1",
+        "bootstrap": "4.6.0",
+        "cashify": "^2.5.0",
+        "chart.js": "^3.5.0",
+        "currency-symbol-map": "^5.0.1",
+        "currency.js": "^2.0.4",
+        "detect-autofill": "^1.1.4",
+        "fontfaceobserver": "^2.1.0",
+        "handorgel": "^0.5.0",
+        "has": "^1.0.3",
+        "insertion-query": "^1.1.0",
+        "js-cookie": "^3.0.0",
+        "loadjs": "^4.2.0",
+        "lodash-es": "^4.17.21",
+        "lozad": "^1.16.0",
+        "microtip": "^0.2.2",
+        "mithril": "^2.0.4",
+        "money": "^0.2.0",
+        "photoswipe": "^4.1.3",
+        "rfs": "^9.0.5",
+        "scroll-into-view": "^1.16.0",
+        "simplestatemanager": "^4.1.1",
+        "smoothscroll-polyfill": "^0.4.4",
+        "sticky-js": "^1.3.0",
+        "stimulus": "^2.0.0",
+        "store": "^2.0.12",
+        "tiny-checker": "^1.0.0"
+      }
+    },
+    "prefix": "/Users/Panoply/Sites/brixtol/serverless/packages/webshop"
+  },
+  "15 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "@brixtol/country-names",
+      "version": "0.1.0",
+      "description": "Mappings for 2 letter (Alpha 2) country codes to English country name",
+      "author": {
+        "name": "Νίκος Σαβίδης ",
+        "email": "n@brixtol.com",
+        "url": "https://brixtoltextiles.com"
+      },
+      "license": "MIT",
+      "main": "./package/index.js",
+      "exports": {
+        "require": "./package/index.js",
+        "import": "./package/index.mjs"
+      },
+      "types": "./package/index.d.ts",
+      "keywords": [
+        "countries",
+        "mappings",
+        "country",
+        "3166-1 alpha-2",
+        "ISO 36166"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/brixtol/country-names"
+      },
+      "bugs": {
+        "url": "https://github.com/brixtol/country-names"
+      },
+      "node": {},
+      "engines": {
+        "pnpm": ">=5"
+      },
+      "scripts": {
+        "dev": "rollup -c -w",
+        "build": "rollup -c --environment prod",
+        "package": "cd versions; pnpm pack ../ && cd ..",
+        "test": "ava --watch --verbose",
+        "postpublish": "npm publish --ignore-scripts --@OWNER:registry='https://registry.npmjs.org'"
+      },
+      "ava": {
+        "require": [
+          "esm"
+        ],
+        "files": [
+          "test/*.js"
+        ],
+        "concurrency": 5
+      },
+      "devDependencies": {
+        "@brixtol/rollup-utils": "workspace:^0.2.0",
+        "@brixtol/tsconfig": "workspace:^1.0.0",
+        "@rollup/plugin-commonjs": "^20.0.0",
+        "esm": "^3.2.25",
+        "rollup": "^2.56.2",
+        "rollup-plugin-filesize": "^9.1.1",
+        "rollup-plugin-terser": "^7.0.2",
+        "rollup-plugin-typescript2": "^0.30.0",
+        "typescript": "^4.3.5"
+      }
+    },
+    "prefix": "/Users/Panoply/Sites/brixtol/serverless/packages/country-names"
+  },
+  "16 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "@brixtol/currency-codes",
+      "version": "0.1.5",
+      "description": "Mappings for 2 letter (Alpha 2) country codes to 3 letter currency code.",
+      "author": {
+        "name": "Νίκος Σαβίδης ",
+        "email": "n@brixtol.com",
+        "url": "https://brixtoltextiles.com"
+      },
+      "license": "MIT",
+      "main": "./package/index.js",
+      "exports": {
+        "require": "./package/index.js",
+        "import": "./package/index.mjs"
+      },
+      "types": "./package/index.d.ts",
+      "keywords": [
+        "currencies",
+        "currency",
+        "mappings",
+        "country",
+        "3166-1 alpha-2",
+        "ISO 4217"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/brixtol/currency-codes"
+      },
+      "bugs": {
+        "url": "https://github.com/brixtol/currency-codes"
+      },
+      "node": {},
+      "engines": {
+        "pnpm": ">=5"
+      },
+      "scripts": {
+        "dev": "rollup -c -w",
+        "build": "rollup -c --environment prod",
+        "package": "cd versions; pnpm pack ../ && cd ..",
+        "test": "ava --watch --verbose",
+        "postpublish": "npm publish --ignore-scripts --@OWNER:registry='https://registry.npmjs.org'"
+      },
+      "ava": {
+        "require": [
+          "esm"
+        ],
+        "files": [
+          "test/*.js"
+        ],
+        "concurrency": 5
+      },
+      "devDependencies": {
+        "@brixtol/rollup-utils": "workspace:^0.2.0",
+        "@brixtol/tsconfig": "workspace:^1.0.0",
+        "@rollup/plugin-commonjs": "^20.0.0",
+        "esm": "^3.2.25",
+        "rollup": "^2.56.2",
+        "rollup-plugin-filesize": "^9.1.1",
+        "rollup-plugin-terser": "^7.0.2",
+        "rollup-plugin-typescript2": "^0.30.0",
+        "typescript": "^4.3.5"
+      }
+    },
+    "prefix": "/Users/Panoply/Sites/brixtol/serverless/packages/currency-codes"
+  },
+  "17 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "s7-website",
+      "version": "0.1.0",
+      "description": "Agency website for Söndag Den Sjunde",
+      "main": "public/bundle.min.js",
+      "private": true,
+      "bin": {
+        "db": "./bin/cli"
+      },
+      "scripts": {
+        "serve": "netlify dev --port 32343",
+        "dev": "rollup -c -w && pnpm serve",
+        "prod": "rollup -c -w --environment prod",
+        "build": "rollup -c --environment prod",
+        "deploy": "netlify deploy -p",
+        "icons": "node -r esm scripts/icons.js",
+        "db": "node -r esm ./bin/db",
+        "test": "ava --color --verbose --watch --timeout=2m",
+        "prebuild": "test \"$CI\" = true && npx pnpm install -r --store=node_modules/.pnpm-store || echo skiping pnpm install"
+      },
+      "prettier": "@brixtol/prettier-config",
+      "eslintConfig": {
+        "extends": [
+          "@brixtol/eslint-config-javascript"
+        ],
+        "rules": {
+          "comma-style": [
+            "error",
+            "first"
+          ]
+        }
+      },
+      "ava": {
+        "require": [
+          "esm"
+        ]
+      },
+      "esm": {
+        "cjs": true
+      },
+      "author": "Nikolas Savvidis <n@brixtol.com>",
+      "license": "ISC",
+      "devDependencies": {
+        "@brixtol/eslint-config-javascript": "workspace:^2.1.0",
+        "@brixtol/prettier-config": "workspace:^1.0.3",
+        "@brixtol/rollup-html": "workspace:^0.1.0",
+        "@brixtol/rollup-utils": "workspace:^0.2.0",
+        "@fullhuman/postcss-purgecss": "^4.0.3",
+        "@rollup/plugin-alias": "^3.1.2",
+        "@rollup/plugin-commonjs": "^18.0.0",
+        "@rollup/plugin-html": "^0.2.3",
+        "@rollup/plugin-node-resolve": "^11.2.1",
+        "@rollup/plugin-replace": "^2.4.2",
+        "@rollup/pluginutils": "^4.1.0",
+        "@types/mithril": "^2.0.7",
+        "autoprefixer": "^10.2.5",
+        "chalk": "^4.1.1",
+        "css-shortener": "^2.1.1",
+        "dotenv": "^8.2.0",
+        "magic-string": "^0.25.7",
+        "minimist": "^1.2.5",
+        "node-sass": "^5.0.0",
+        "postcss": "^8.2.13",
+        "rollup-plugin-filesize": "^9.1.1",
+        "rollup-plugin-globlin": "^0.1.4",
+        "rollup-plugin-html-minifier": "^1.1.0",
+        "rollup-plugin-livereload": "^2.0.0",
+        "rollup-plugin-node-polyfills": "^0.2.1",
+        "rollup-plugin-postcss": "^4.0.0",
+        "rollup-plugin-scss": "^2.6.1",
+        "rollup-plugin-terser": "^7.0.2"
+      },
+      "dependencies": {
+        "bootstrap": "^4.6.0",
+        "detect-it": "^4.0.1",
+        "loadjs": "^4.2.0",
+        "mithril": "^2.0.4",
+        "siema": "^1.5.1",
+        "snake-case": "^3.0.4"
+      }
+    },
+    "prefix": "/Users/Panoply/Sites/brixtol/serverless/packages/s7-website"
+  },
+  "18 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "@brixtol/currency-rates",
+      "version": "0.1.0",
+      "private": true,
+      "description": "Shopify currency exchane rate roundings for Shopify Payment pricings used on the brixtol textiles webshop",
+      "author": "ΝΙΚΟΛΑΣ ΣΑΒΒΙΔΗΣ",
+      "owner": "SISSEL SAAS",
+      "main": "./package/index.cjs.js",
+      "module": "./package/index.es.js",
+      "types": "index.d.ts",
+      "scripts": {
+        "serve": "netlify dev",
+        "dev": "rollup -c -w",
+        "build": "rollup -c --environment prod",
+        "test": "ava --color --verbose --watch --timeout=2m"
+      },
+      "prettier": "@brixtol/prettier-config",
+      "eslintConfig": {
+        "extends": [
+          "@brixtol/eslint-config-javascript"
+        ]
+      },
+      "ava": {
+        "files": [
+          "tests/**/*"
+        ],
+        "concurrency": 5,
+        "require": [
+          "esm"
+        ]
+      },
+      "esm": {
+        "cjs": true
+      },
+      "dependencies": {
+        "@brixtol/currency-codes": "workspace:^0.1.5",
+        "@brixtol/currency-symbols": "workspace:^0.1.3"
+      },
+      "devDependencies": {
+        "@brixtol/eslint-config-javascript": "workspace:^2.0.1",
+        "@brixtol/prettier-config": "workspace:^1.0.3",
+        "@brixtol/rollup-utils": "workspace:^0.2.0",
+        "@rollup/plugin-commonjs": "^17.1.0",
+        "esm": "^3.2.25",
+        "rollup": "^2.38.1",
+        "rollup-plugin-filesize": "^9.1.0",
+        "rollup-plugin-terser": "^7.0.2"
+      },
+      "peerDependencies": {
+        "ava": "^3.13.0",
+        "esm": "^3.2.25",
+        "rollup": "^2.29.0"
+      }
+    },
+    "prefix": "/Users/Panoply/Sites/brixtol/serverless/packages/currency-rates"
+  },
+  "19 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "@brixtol/synth",
+      "version": "0.1.0",
+      "private": true,
+      "description": "Shopify embedded application admin for Brixtol Textiles",
+      "author": "ΝΙΚΟΛΑΣ ΣΑΒΒΙΔΗΣ",
+      "owner": "SISSEL SAAS",
+      "license": "see LICENSE.txt",
+      "main": "./public/index.cjs.js",
+      "types": "types/index.d.ts",
+      "scripts": {
+        "serve": "netlify dev --port 63464",
+        "dev": "rollup -c -w",
+        "build": "rollup -c --environment prod",
+        "deploy": "netlify deploy -p",
+        "api:key": "node -r esm scripts/api-key.js",
+        "bootstrap": "node -r esm scripts/bootstrap.js",
+        "test": "ava --color --verbose --watch --timeout=2m",
+        "prebuild": "test \"$CI\" = true && npx pnpm install -r --store=node_modules/.pnpm-store || echo skiping pnpm install"
+      },
+      "prettier": "@brixtol/prettier-config",
+      "eslintConfig": {
+        "extends": [
+          "@brixtol/eslint-config-javascript"
+        ],
+        "rules": {
+          "comma-style": [
+            "error",
+            "first"
+          ]
+        }
+      },
+      "ava": {
+        "require": [
+          "esm"
+        ]
+      },
+      "esm": {
+        "cjs": true
+      },
+      "dependencies": {
+        "@advanced-rest-client/google-drive-browser": "^4.0.2",
+        "@auth0/auth0-spa-js": "^1.17.0",
+        "@brixtol/currency-codes": "workspace:^0.1.5",
+        "@brixtol/currency-symbols": "workspace:^0.1.3",
+        "@buttercup/googledrive-client": "^1.2.0",
+        "@jaames/iro": "^5.5.2",
+        "@uppy/companion": "^2.12.2",
+        "@uppy/core": "^1.20.0",
+        "@uppy/dashboard": "^1.21.0",
+        "@uppy/google-drive": "^1.7.2",
+        "canvas-to-image": "^2.2.0",
+        "canvas2svg": "^1.0.16",
+        "chart.js": "^3.5.0",
+        "construct-ui": "^0.3.1",
+        "downloadjs": "^1.4.7",
+        "embedo": "^1.14.0",
+        "faunadb": "^4.3.0",
+        "generate-password": "^1.6.1",
+        "got": "^11.8.2",
+        "gotrue-js": "^0.9.29",
+        "html-to-image": "^1.7.0",
+        "isomorphic-fetch": "^3.0.0",
+        "jsbarcode": "^3.11.4",
+        "loadjs": "^4.2.0",
+        "lodash": "^4.17.21",
+        "lodash.kebabcase": "^4.1.1",
+        "lodash.startcase": "^4.4.0",
+        "mergerino": "^0.4.0",
+        "mithril": "^2.0.4",
+        "mithril-infinite": "^1.3.0",
+        "mithril-range": "^1.0.0",
+        "nanoid": "^3.1.25",
+        "pusher-js": "^7.0.3",
+        "query-string": "^7.0.1",
+        "rambda": "^6.9.0",
+        "social-login-oauth": "^1.0.4",
+        "store": "^2.0.12",
+        "svg-dataurl": "^1.0.0",
+        "timeago.js": "^4.0.2",
+        "uppy": "^1.31.0",
+        "vanilla-colorful": "^0.6.2"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.15.0",
+        "@babel/preset-env": "^7.15.0",
+        "@brixtol/eslint-config-javascript": "workspace:^2.0.1",
+        "@brixtol/prettier-config": "workspace:^1.0.3",
+        "@brixtol/rollup-utils": "workspace:^0.2.0",
+        "@brixtol/synth-theme": "workspace:^0.1.0",
+        "@rollup/plugin-alias": "^3.1.5",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-html": "^0.2.3",
+        "@rollup/plugin-node-resolve": "^13.0.4",
+        "@rollup/plugin-replace": "^3.0.0",
+        "@types/aws-lambda": "^8.10.82",
+        "@types/fs-extra": "^9.0.12",
+        "@types/gapi.auth2": "^0.0.55",
+        "@types/gapi.client": "^1.0.5",
+        "@types/google.picker": "^0.0.39",
+        "@types/isomorphic-fetch": "^0.0.35",
+        "@types/lodash": "^4.14.172",
+        "@types/mergerino": "^0.4.0",
+        "@types/mithril": "^2.0.8",
+        "@types/passport-google-oauth": "^1.0.42",
+        "ava": "^3.15.0",
+        "esm": "^3.2.25",
+        "fs-extra": "^10.0.0",
+        "rollup-plugin-livereload": "^2.0.5",
+        "rollup-plugin-node-polyfills": "^0.2.1",
+        "rollup-plugin-postcss": "^4.0.1",
+        "rollup-plugin-serve": "^1.1.0",
+        "rollup-plugin-ts": "^1.4.0",
+        "typescript": "^4.3.5"
+      },
+      "peerDependencies": {
+        "ava": "^3.13.0",
+        "esm": "^3.2.25",
+        "typescript": "^4.0.3"
+      }
+    },
+    "prefix": "/Users/Panoply/Sites/brixtol/serverless/packages/synth"
+  },
+  "20 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "@brixtol/api",
+      "version": "0.1.0",
+      "private": true,
+      "description": "Brixtol REST API built atop of Netlify serverless lambda functions and FaunaDB",
+      "author": "ΝΙΚΟΛΑΣ ΣΑΒΒΙΔΗΣ",
+      "owner": "SISSEL SAAS",
+      "license": "see LICENSE.txt",
+      "types": "types/index.d.ts",
+      "scripts": {
+        "serve": "netlify dev --port 8888",
+        "serve:live": "netlify dev --live",
+        "dev": "rollup -c -w",
+        "db:run": "fauna eval brixtol --file=src/db/queries/stats.fql",
+        "db:query": "chokidar \"src/db/queries/*.fql\" -c \"fauna eval brixtol --file={path}\"",
+        "db:up": "node -r esm src/db/index.js",
+        "build": "rollup -c --environment prod",
+        "deploy": "pnpm run build && netlify deploy -p",
+        "api:key": "node -r esm scripts/api-key.js",
+        "bootstrap": "node -r esm scripts/bootstrap.js",
+        "test": "ava --color --verbose --watch --timeout=2m",
+        "prebuild": "test \"$CI\" = true && npx pnpm install -r --store=node_modules/.pnpm-store || echo skiping pnpm install"
+      },
+      "prettier": "@brixtol/prettier-config",
+      "eslintConfig": {
+        "extends": [
+          "@brixtol/eslint-config-javascript"
+        ]
+      },
+      "ava": {
+        "files": [
+          "tests/stock.js"
+        ],
+        "require": [
+          "esm"
+        ]
+      },
+      "esm": {
+        "cjs": true
+      },
+      "dependencies": {
+        "@brixtol/cryptographer": "workspace:^0.1.2",
+        "@brixtol/currency-codes": "workspace:^0.1.5",
+        "@brixtol/currency-rates": "workspace:^0.1.0",
+        "@brixtol/currency-symbol-placements": "workspace:^0.1.2",
+        "@brixtol/currency-symbols": "workspace:^0.1.3",
+        "@google-cloud/storage": "^5.8.3",
+        "@uppy/companion": "^2.6.0",
+        "cloud-bucket": "^0.3.13",
+        "convert": "^1.8.2",
+        "cookie": "^0.4.1",
+        "country-list": "^2.2.0",
+        "dotenv": "^8.2.0",
+        "erre": "^2.2.0",
+        "faunadb": "^4.1.3",
+        "google-auth-library": "^7.0.3",
+        "google-drive-getfilelist": "^1.0.5",
+        "googleapis": "^68.0.0",
+        "got": "^11.8.2",
+        "isomorphic-fetch": "^3.0.0",
+        "jsonwebtoken": "^8.5.1",
+        "lambda-log": "^2.4.0",
+        "language-name-map": "^0.3.0",
+        "lodash": "^4.17.21",
+        "lodash-es": "^4.17.21",
+        "lodash.pick": "^4.4.0",
+        "lodash.remove": "^4.7.0",
+        "lodash.throttle": "^4.1.1",
+        "lodash.uniqBy": "npm:lodash.uniqby@^4.7.0",
+        "marky": "^1.2.1",
+        "p-map": "^4.0.0",
+        "p-throttle": "^4.1.1",
+        "passport": "^0.4.1",
+        "pretty-ms": "^7.0.1",
+        "pusher": "^5.0.0",
+        "query-string": "^7.0.0",
+        "rambda": "^6.7.0",
+        "shopify-api-node": "^3.6.7",
+        "simple-oauth2": "^4.2.0",
+        "urlencode": "^1.1.0"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.13.14",
+        "@babel/preset-env": "^7.13.12",
+        "@brixtol/eslint-config-javascript": "workspace:^2.0.1",
+        "@brixtol/prettier-config": "workspace:^1.0.3",
+        "@brixtol/rollup-utils": "workspace:^0.1.0",
+        "@rollup/plugin-alias": "^3.1.2",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-node-resolve": "^11.2.1",
+        "@rollup/plugin-replace": "^2.4.2",
+        "@types/aws-lambda": "^8.10.73",
+        "@types/facebook-js-sdk": "^3.3.2",
+        "@types/fs-extra": "^9.0.9",
+        "@types/isomorphic-fetch": "^0.0.35",
+        "@types/lodash": "^4.14.168",
+        "@types/mithril": "^2.0.7",
+        "ava": "^3.15.0",
+        "babel-plugin-module-resolver": "^4.1.0",
+        "chokidar-cli": "^2.1.0",
+        "esm": "^3.2.25",
+        "fauna-shell": "^0.12.3",
+        "fs-extra": "^9.1.0",
+        "netlify-cli": "^3.13.10",
+        "netlify-plugin-csp-headers": "^0.0.1-alpha.8",
+        "pnpm": "^5.18.9",
+        "rollup": "^2.44.0",
+        "rollup-plugin-livereload": "^2.0.0",
+        "rollup-plugin-node-polyfills": "^0.2.1",
+        "rollup-plugin-serve": "^1.1.0",
+        "rollup-plugin-terser": "^7.0.2"
+      },
+      "peerDependencies": {
+        "ava": "^3.13.0",
+        "esm": "^3.2.25",
+        "fauna-shell": "^0.11.5",
+        "rollup": "^2.26.11"
+      }
+    },
+    "prefix": "/Users/Panoply/Sites/brixtol/serverless/packages/api"
+  },
+  "21 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "@brixtol/currency-symbols",
+      "version": "0.1.3",
+      "description": "Mappings for currency code to currency symbol",
+      "author": "Nίκος Σαβίδης <nicos@brixtoltextiles.com>",
+      "license": "MIT",
+      "main": "./package/currency-symbols.cjs.js",
+      "module": "./package/currency-symbols.es.js",
+      "types": "index.d.ts",
+      "keywords": [
+        "currency",
+        "mappings",
+        "country",
+        "3166-1 alpha-2",
+        "ISO 4217"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/brixtol/currency-symbols"
+      },
+      "bugs": {
+        "url": "https://github.com/brixtol/currency-symbols"
+      },
+      "engines": {
+        "pnpm": ">=5"
+      },
+      "scripts": {
+        "dev": "rollup -c -w",
+        "build": "rollup -c --environment prod",
+        "package": "cd versions; pnpm pack ../ && cd ..",
+        "test": "ava --watch --verbose",
+        "postpublish": "npm publish --ignore-scripts --@OWNER:registry='https://registry.npmjs.org'"
+      },
+      "ava": {
+        "require": [
+          "esm"
+        ],
+        "files": [
+          "test/*.js"
+        ],
+        "concurrency": 5
+      },
+      "devDependencies": {
+        "@brixtol/rollup-utils": "workspace:^0.2.0",
+        "@rollup/plugin-commonjs": "^17.1.0",
+        "esm": "^3.2.25",
+        "rollup": "^2.38.1",
+        "rollup-plugin-filesize": "^9.1.0",
+        "rollup-plugin-terser": "^7.0.2"
+      },
+      "peerDependencies": {
+        "esm": "^3.2.25",
+        "rollup": "^2.26.11"
+      }
+    },
+    "prefix": "/Users/Panoply/Sites/brixtol/serverless/packages/currency-symbols"
+  },
+  "22 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "brixtol",
+      "version": "0.1.0",
+      "private": true,
+      "author": "ΝΙΚΟΛΑΣ ΣΑΒΒΙΔΗΣ <nicos@brixtoltextiles.com>",
+      "license": "See LICENSE in LICENSE",
+      "description": "Brixtol Textiles web applications and internally engineered solutions",
+      "engines": {
+        "pnpm": ">=5"
+      },
+      "scripts": {
+        "meta": "meta",
+        "dev": "pnpm dev -r --no-sort --workspace-concurrency Infinity",
+        "build": "pnpm build -r --no-sort --workspace-concurrency Infinity",
+        "api:serve": "pnpm serve --filter ./packages/api",
+        "api:dev": "pnpm dev --filter ./packages/api",
+        "api:build": "pnpm build --filter ./packages/api",
+        "api:deploy": "pnpm deploy --filter ./packages/api",
+        "api:db": "pnpm db:query --filter ./packages/api",
+        "webshop:dev": "pnpm dev --filter ./packages/webshop",
+        "webshop:prod": "pnpm prod --filter ./packages/webshop",
+        "webshop:build": "pnpm build --filter ./packages/webshop",
+        "backend:serve": "pnpm serve -r --parallel --filter ./packages/api --filter ./packages/synth --filter --workspace-concurrency Infinity",
+        "backend:dev": "pnpm dev -r --parallel --filter ./packages/api --filter ./packages/synth --filter ./packages/synth-theme --no-sort --workspace-concurrency Infinity",
+        "backend:build": "pnpm build -r --parallel --filter ./packages/api --filter ./packages/synth --filter ./packages/synth-theme --workspace-concurrency Infinity",
+        "synth-theme:dev": "pnpm dev --filter ./packages/synth-theme",
+        "synth-theme:build": "pnpm build --filter ./packages/synth-theme"
+      },
+      "prettier": "@brixtol/prettier-config",
+      "devDependencies": {
+        "@brixtol/prettier-config": "workspace:^1.0.3",
+        "@brixtol/rollup-utils": "workspace:^0.2.0",
+        "meta": "^2.2.15",
+        "pnpm": "^5.16.0"
+      }
+    },
+    "prefix": "/Users/Panoply/Sites/brixtol/serverless"
+  },
+  "23 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "@brixtol/browserslist-config",
+      "version": "1.0.3",
+      "description": "Browserslist shareable config file for Brixtol Textiles",
+      "author": "Νίκος Σαβίδης <n@brixtol.com>",
+      "license": "MIT",
+      "main": "index.js",
+      "keywords": [
+        "browsers",
+        "browserslist",
+        "config",
+        "brixtol"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/brixtol/browserslist-config"
+      },
+      "bugs": {
+        "url": "https://github.com/brixtol/browserslist-config/issues"
+      },
+      "engines": {
+        "pnpm": ">=5"
+      },
+      "scripts": {
+        "test": "ava --color --verbose --watch --timeout=2m",
+        "postpublish": "npm publish --ignore-scripts --@OWNER:registry='https://registry.npmjs.org/@brixtol'"
+      },
+      "publishConfig": {
+        "registry": "https://npm.pkg.github.com"
+      },
+      "prettier": "@brixtol/prettier-config",
+      "eslintConfig": {
+        "extends": [
+          "@brixtol/eslint-config-javascript"
+        ],
+        "parserOptions": {
+          "babelOptions": {
+            "configFile": false
+          }
+        }
+      },
+      "ava": {
+        "files": [
+          "tests/index.js"
+        ],
+        "require": [
+          "esm"
+        ]
+      },
+      "esm": {
+        "cjs": true
+      },
+      "devDependencies": {
+        "@brixtol/eslint-config-javascript": "^2.0.3",
+        "@brixtol/prettier-config": "^1.0.3",
+        "@brixtol/rollup-utils": "workspace:^0.2.0",
+        "ava": "^3.15.0",
+        "esm": "^3.2.25"
+      }
+    },
+    "prefix": "/Users/Panoply/Sites/brixtol/serverless/packages/browserslist-config"
+  },
+  "24 debug pnpm:context": {
+    "currentLockfileExists": true,
+    "storeDir": "/Users/Panoply/.pnpm-store/v3",
+    "virtualStoreDir": "/Users/Panoply/Sites/brixtol/serverless/node_modules/.pnpm"
+  },
+  "25 debug pnpm:stage": {
+    "prefix": "/Users/Panoply/Sites/brixtol/serverless",
+    "stage": "resolution_started"
+  },
+  "26 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../rollup-utils",
+    "wanted": {
+      "dependentId": "packages/currency-symbol-placements",
+      "name": "@brixtol/rollup-utils",
+      "rawSpec": "workspace:^0.2.0"
+    }
+  },
+  "27 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../rollup-utils",
+    "wanted": {
+      "dependentId": "packages/eslint-config-javascript",
+      "name": "@brixtol/rollup-utils",
+      "rawSpec": "workspace:^0.2.0"
+    }
+  },
+  "28 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../rollup-utils",
+    "wanted": {
+      "dependentId": "packages/eslint-config-typescript",
+      "name": "@brixtol/rollup-utils",
+      "rawSpec": "workspace:^0.2.0"
+    }
+  },
+  "29 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../rollup-utils",
+    "wanted": {
+      "dependentId": "packages/prettier-config",
+      "name": "@brixtol/rollup-utils",
+      "rawSpec": "workspace:^0.2.0"
+    }
+  },
+  "30 debug pnpm:_dependency_resolved": {
+    "resolution": "link:",
+    "wanted": {
+      "dependentId": "packages/rollup-utils",
+      "name": "@brixtol/rollup-utils",
+      "rawSpec": "workspace:^0.2.0"
+    }
+  },
+  "31 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../prettier-config",
+    "wanted": {
+      "dependentId": "packages/rollup-utils",
+      "name": "@brixtol/prettier-config",
+      "rawSpec": "workspace:^1.0.3"
+    }
+  },
+  "32 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../rollup-utils",
+    "wanted": {
+      "dependentId": "packages/cryptographer",
+      "name": "@brixtol/rollup-utils",
+      "rawSpec": "workspace:^0.2.0"
+    }
+  },
+  "33 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../eslint-config-javascript",
+    "wanted": {
+      "dependentId": "packages/cryptographer",
+      "name": "@brixtol/eslint-config-javascript",
+      "rawSpec": "workspace:^2.0.1"
+    }
+  },
+  "34 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../prettier-config",
+    "wanted": {
+      "dependentId": "packages/cryptographer",
+      "name": "@brixtol/prettier-config",
+      "rawSpec": "workspace:^1.0.3"
+    }
+  },
+  "35 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../rollup-utils",
+    "wanted": {
+      "dependentId": "packages/pjax",
+      "name": "@brixtol/rollup-utils",
+      "rawSpec": "workspace:^0.2.0"
+    }
+  },
+  "36 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../eslint-config-typescript",
+    "wanted": {
+      "dependentId": "packages/pjax",
+      "name": "@brixtol/eslint-config-typescript",
+      "rawSpec": "workspace:^1.0.0"
+    }
+  },
+  "37 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../prettier-config",
+    "wanted": {
+      "dependentId": "packages/pjax",
+      "name": "@brixtol/prettier-config",
+      "rawSpec": "workspace:^1.0.3"
+    }
+  },
+  "38 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../rollup-utils",
+    "wanted": {
+      "dependentId": "packages/rollup-html",
+      "name": "@brixtol/rollup-utils",
+      "rawSpec": "workspace:^0.2.0"
+    }
+  },
+  "39 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../eslint-config-javascript",
+    "wanted": {
+      "dependentId": "packages/rollup-html",
+      "name": "@brixtol/eslint-config-javascript",
+      "rawSpec": "workspace:^2.0.1"
+    }
+  },
+  "40 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../prettier-config",
+    "wanted": {
+      "dependentId": "packages/rollup-html",
+      "name": "@brixtol/prettier-config",
+      "rawSpec": "workspace:^1.0.3"
+    }
+  },
+  "41 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../rollup-utils",
+    "wanted": {
+      "dependentId": "packages/sdk",
+      "name": "@brixtol/rollup-utils",
+      "rawSpec": "workspace:^0.2.0"
+    }
+  },
+  "42 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../eslint-config-javascript",
+    "wanted": {
+      "dependentId": "packages/sdk",
+      "name": "@brixtol/eslint-config-javascript",
+      "rawSpec": "workspace:^2.0.1"
+    }
+  },
+  "43 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../prettier-config",
+    "wanted": {
+      "dependentId": "packages/sdk",
+      "name": "@brixtol/prettier-config",
+      "rawSpec": "workspace:^1.0.3"
+    }
+  },
+  "44 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../rollup-utils",
+    "wanted": {
+      "dependentId": "packages/synth-theme",
+      "name": "@brixtol/rollup-utils",
+      "rawSpec": "workspace:^0.2.0"
+    }
+  },
+  "45 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../eslint-config-typescript",
+    "wanted": {
+      "dependentId": "packages/synth-theme",
+      "name": "@brixtol/eslint-config-typescript",
+      "rawSpec": "workspace:^1.0.0"
+    }
+  },
+  "46 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../prettier-config",
+    "wanted": {
+      "dependentId": "packages/synth-theme",
+      "name": "@brixtol/prettier-config",
+      "rawSpec": "workspace:^1.0.3"
+    }
+  },
+  "47 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../rollup-utils",
+    "wanted": {
+      "dependentId": "packages/tsconfig",
+      "name": "@brixtol/rollup-utils",
+      "rawSpec": "workspace:^0.2.0"
+    }
+  },
+  "48 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../rollup-utils",
+    "wanted": {
+      "dependentId": "packages/webshop-ui",
+      "name": "@brixtol/rollup-utils",
+      "rawSpec": "workspace:^0.2.0"
+    }
+  },
+  "49 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../rollup-utils",
+    "wanted": {
+      "dependentId": "packages/webshop",
+      "name": "@brixtol/rollup-utils",
+      "rawSpec": "workspace:^0.2.0"
+    }
+  },
+  "50 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../eslint-config-typescript",
+    "wanted": {
+      "dependentId": "packages/webshop",
+      "name": "@brixtol/eslint-config-typescript",
+      "rawSpec": "workspace:^1.0.0"
+    }
+  },
+  "51 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../prettier-config",
+    "wanted": {
+      "dependentId": "packages/webshop",
+      "name": "@brixtol/prettier-config",
+      "rawSpec": "workspace:^1.0.3"
+    }
+  },
+  "52 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../currency-symbol-placements",
+    "wanted": {
+      "dependentId": "packages/webshop",
+      "name": "@brixtol/currency-symbol-placements",
+      "rawSpec": "workspace:^0.1.2"
+    }
+  },
+  "53 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../rollup-utils",
+    "wanted": {
+      "dependentId": "packages/country-names",
+      "name": "@brixtol/rollup-utils",
+      "rawSpec": "workspace:^0.2.0"
+    }
+  },
+  "54 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../tsconfig",
+    "wanted": {
+      "dependentId": "packages/country-names",
+      "name": "@brixtol/tsconfig",
+      "rawSpec": "workspace:^1.0.0"
+    }
+  },
+  "55 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../rollup-utils",
+    "wanted": {
+      "dependentId": "packages/currency-codes",
+      "name": "@brixtol/rollup-utils",
+      "rawSpec": "workspace:^0.2.0"
+    }
+  },
+  "56 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../tsconfig",
+    "wanted": {
+      "dependentId": "packages/currency-codes",
+      "name": "@brixtol/tsconfig",
+      "rawSpec": "workspace:^1.0.0"
+    }
+  },
+  "57 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../rollup-utils",
+    "wanted": {
+      "dependentId": "packages/s7-website",
+      "name": "@brixtol/rollup-utils",
+      "rawSpec": "workspace:^0.2.0"
+    }
+  },
+  "58 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../eslint-config-javascript",
+    "wanted": {
+      "dependentId": "packages/s7-website",
+      "name": "@brixtol/eslint-config-javascript",
+      "rawSpec": "workspace:^2.1.0"
+    }
+  },
+  "59 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../prettier-config",
+    "wanted": {
+      "dependentId": "packages/s7-website",
+      "name": "@brixtol/prettier-config",
+      "rawSpec": "workspace:^1.0.3"
+    }
+  },
+  "60 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../rollup-html",
+    "wanted": {
+      "dependentId": "packages/s7-website",
+      "name": "@brixtol/rollup-html",
+      "rawSpec": "workspace:^0.1.0"
+    }
+  },
+  "61 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../rollup-utils",
+    "wanted": {
+      "dependentId": "packages/currency-rates",
+      "name": "@brixtol/rollup-utils",
+      "rawSpec": "workspace:^0.2.0"
+    }
+  },
+  "62 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../eslint-config-javascript",
+    "wanted": {
+      "dependentId": "packages/currency-rates",
+      "name": "@brixtol/eslint-config-javascript",
+      "rawSpec": "workspace:^2.0.1"
+    }
+  },
+  "63 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../prettier-config",
+    "wanted": {
+      "dependentId": "packages/currency-rates",
+      "name": "@brixtol/prettier-config",
+      "rawSpec": "workspace:^1.0.3"
+    }
+  },
+  "64 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../currency-codes",
+    "wanted": {
+      "dependentId": "packages/currency-rates",
+      "name": "@brixtol/currency-codes",
+      "rawSpec": "workspace:^0.1.5"
+    }
+  },
+  "65 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../currency-symbols",
+    "wanted": {
+      "dependentId": "packages/currency-rates",
+      "name": "@brixtol/currency-symbols",
+      "rawSpec": "workspace:^0.1.3"
+    }
+  },
+  "66 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../rollup-utils",
+    "wanted": {
+      "dependentId": "packages/synth",
+      "name": "@brixtol/rollup-utils",
+      "rawSpec": "workspace:^0.2.0"
+    }
+  },
+  "67 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../eslint-config-javascript",
+    "wanted": {
+      "dependentId": "packages/synth",
+      "name": "@brixtol/eslint-config-javascript",
+      "rawSpec": "workspace:^2.0.1"
+    }
+  },
+  "68 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../prettier-config",
+    "wanted": {
+      "dependentId": "packages/synth",
+      "name": "@brixtol/prettier-config",
+      "rawSpec": "workspace:^1.0.3"
+    }
+  },
+  "69 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../synth-theme",
+    "wanted": {
+      "dependentId": "packages/synth",
+      "name": "@brixtol/synth-theme",
+      "rawSpec": "workspace:^0.1.0"
+    }
+  },
+  "70 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../currency-codes",
+    "wanted": {
+      "dependentId": "packages/synth",
+      "name": "@brixtol/currency-codes",
+      "rawSpec": "workspace:^0.1.5"
+    }
+  },
+  "71 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../currency-symbols",
+    "wanted": {
+      "dependentId": "packages/synth",
+      "name": "@brixtol/currency-symbols",
+      "rawSpec": "workspace:^0.1.3"
+    }
+  },
+  "72 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../eslint-config-javascript",
+    "wanted": {
+      "dependentId": "packages/api",
+      "name": "@brixtol/eslint-config-javascript",
+      "rawSpec": "workspace:^2.0.1"
+    }
+  },
+  "73 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../prettier-config",
+    "wanted": {
+      "dependentId": "packages/api",
+      "name": "@brixtol/prettier-config",
+      "rawSpec": "workspace:^1.0.3"
+    }
+  },
+  "74 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../cryptographer",
+    "wanted": {
+      "dependentId": "packages/api",
+      "name": "@brixtol/cryptographer",
+      "rawSpec": "workspace:^0.1.2"
+    }
+  },
+  "75 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../currency-codes",
+    "wanted": {
+      "dependentId": "packages/api",
+      "name": "@brixtol/currency-codes",
+      "rawSpec": "workspace:^0.1.5"
+    }
+  },
+  "76 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../currency-rates",
+    "wanted": {
+      "dependentId": "packages/api",
+      "name": "@brixtol/currency-rates",
+      "rawSpec": "workspace:^0.1.0"
+    }
+  },
+  "77 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../currency-symbol-placements",
+    "wanted": {
+      "dependentId": "packages/api",
+      "name": "@brixtol/currency-symbol-placements",
+      "rawSpec": "workspace:^0.1.2"
+    }
+  },
+  "78 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../currency-symbols",
+    "wanted": {
+      "dependentId": "packages/api",
+      "name": "@brixtol/currency-symbols",
+      "rawSpec": "workspace:^0.1.3"
+    }
+  },
+  "79 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../rollup-utils",
+    "wanted": {
+      "dependentId": "packages/currency-symbols",
+      "name": "@brixtol/rollup-utils",
+      "rawSpec": "workspace:^0.2.0"
+    }
+  },
+  "80 debug pnpm:_dependency_resolved": {
+    "resolution": "link:packages/rollup-utils",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@brixtol/rollup-utils",
+      "rawSpec": "workspace:^0.2.0"
+    }
+  },
+  "81 debug pnpm:_dependency_resolved": {
+    "resolution": "link:packages/prettier-config",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@brixtol/prettier-config",
+      "rawSpec": "workspace:^1.0.3"
+    }
+  },
+  "82 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../rollup-utils",
+    "wanted": {
+      "dependentId": "packages/browserslist-config",
+      "name": "@brixtol/rollup-utils",
+      "rawSpec": "workspace:^0.2.0"
+    }
+  },
+  "83 error pnpm": {
+    "code": "ERR_PNPM_NO_MATCHING_VERSION_INSIDE_WORKSPACE",
+    "pkgsStack": [],
+    "err": {
+      "name": "Error",
+      "message": "In ../api: No matching version found for @brixtol/rollup-utils@^0.1.0 inside the workspace",
+      "code": "ERR_PNPM_NO_MATCHING_VERSION_INSIDE_WORKSPACE",
+      "stack": "Error: In ../api: No matching version found for @brixtol/rollup-utils@^0.1.0 inside the workspace\n    at tryResolveFromWorkspace (/Users/Panoply/.nvm/versions/node/v14.17.0/pnpm-global/5/node_modules/.pnpm/pnpm@6.11.5/node_modules/pnpm/dist/pnpm.cjs:79827:15)\n    at resolveNpm (/Users/Panoply/.nvm/versions/node/v14.17.0/pnpm-global/5/node_modules/.pnpm/pnpm@6.11.5/node_modules/pnpm/dist/pnpm.cjs:79729:39)\n    at Object.resolve (/Users/Panoply/.nvm/versions/node/v14.17.0/pnpm-global/5/node_modules/.pnpm/pnpm@6.11.5/node_modules/pnpm/dist/pnpm.cjs:79934:40)\n    at ctx.requestsQueue.add.priority (/Users/Panoply/.nvm/versions/node/v14.17.0/pnpm-global/5/node_modules/.pnpm/pnpm@6.11.5/node_modules/pnpm/dist/pnpm.cjs:66259:75)\n    at run (/Users/Panoply/.nvm/versions/node/v14.17.0/pnpm-global/5/node_modules/.pnpm/pnpm@6.11.5/node_modules/pnpm/dist/pnpm.cjs:66011:90)\n    at PQueue._tryToStartAnother (/Users/Panoply/.nvm/versions/node/v14.17.0/pnpm-global/5/node_modules/.pnpm/pnpm@6.11.5/node_modules/pnpm/dist/pnpm.cjs:65965:13)\n    at PQueue._next (/Users/Panoply/.nvm/versions/node/v14.17.0/pnpm-global/5/node_modules/.pnpm/pnpm@6.11.5/node_modules/pnpm/dist/pnpm.cjs:65914:14)\n    at run (/Users/Panoply/.nvm/versions/node/v14.17.0/pnpm-global/5/node_modules/.pnpm/pnpm@6.11.5/node_modules/pnpm/dist/pnpm.cjs:66021:18)"
+    }
+  }
+}

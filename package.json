@@ -1,0 +1,67 @@
+{
+  "name": "@brixtol/faunacate",
+  "version": "0.1.0",
+  "description": "A migration helper utility for populating a serverless Fauna database.",
+  "author": {
+    "name": "Νίκος Σαβίδης ",
+    "email": "n@brixtol.com",
+    "url": "https://brixtoltextiles.com"
+  },
+  "license": "MIT",
+  "main": "./package/index.js",
+  "exports": {
+    "require": "./package/index.js",
+    "import": "./package/index.mjs"
+  },
+  "types": "./package/index.d.ts",
+  "keywords": [
+    "faunadb",
+    "migration",
+    "database",
+    "fauna",
+    "serverless"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brixtol/faunacate"
+  },
+  "bugs": {
+    "url": "https://github.com/brixtol/faunacate"
+  },
+  "node": {},
+  "engines": {
+    "pnpm": ">=5"
+  },
+  "bin": {
+    "faunacate": "./bin/faunacate",
+    "fdb": "./bin/faunacate"
+  },
+  "scripts": {
+    "faunacate": "./bin/sync",
+    "dev": "rollup -c -w",
+    "build": "rollup -c --environment prod",
+    "package": "cd versions; pnpm pack ../ && cd ..",
+    "test": "ava --watch --verbose",
+    "postpublish": "npm publish --ignore-scripts --@OWNER:registry='https://registry.npmjs.org'"
+  },
+  "ava": {
+    "require": [
+      "esm"
+    ],
+    "files": [
+      "test/*.js"
+    ],
+    "concurrency": 5
+  },
+  "devDependencies": {
+    "@brixtol/rollup-utils": "workspace:^0.2.0",
+    "@brixtol/tsconfig": "workspace:^1.0.0",
+    "@rollup/plugin-commonjs": "^20.0.0",
+    "esm": "^3.2.25",
+    "rollup": "^2.56.2",
+    "rollup-plugin-filesize": "^9.1.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "typescript": "^4.3.5"
+  }
+}
