@@ -1,0 +1,18 @@
+{
+  "migrations": [
+    "schema",
+    "users",
+    "logs",
+    "stock",
+    "products",
+    "currencies",
+    "settings"
+  ],
+  "functions": [
+    "get_shopify_inventory_items",
+    "get_tracked_stock",
+    "get_synth_config",
+    "get_stock_mapping",
+    "create_stock_ref_on_product"
+  ]
+}

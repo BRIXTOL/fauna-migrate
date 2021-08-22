@@ -2,6 +2,8 @@
   "extends": "@brixtol/tsconfig",
   "compilerOptions": {
     "declaration": true,
-    "declarationDir": "package"
+    "declarationDir": "package/@types",
+    "module": "ESNext",
+    "target": "ES2015"
   }
 }

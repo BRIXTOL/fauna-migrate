@@ -28,7 +28,7 @@ FAUNA_KEY = secret
 
 The following is the assumed (default) directory structure that is resolved from a projects cwd where fauna-migrate has been installed. The below example attempts to depict what is typical in a website/blog and show how one _might_ construct something like this.
 
-> Please note that the `functions` directory and the `fauna.migrate.js` config file are both optional and not required. There is no enforced pattern to how one should structure their migrations when using fauna-migrate.
+> Please note that the `functions` directory and the `config.json` config file are both optional and not required. There is no enforced pattern to how one should structure their migrations when using fauna-migrate.
 
 ```
 ├── db
@@ -47,7 +47,7 @@ The following is the assumed (default) directory structure that is resolved from
 │   │   ├── articles.js
 │   │   └── pages.js
 │   │
-│   └── fauna.migrate.js
+│   └── config.json
 │
 └── .faunarc
 ```
@@ -58,14 +58,38 @@ The module provides a basic cli for executing the migrations. You should avoid i
 
 ### Commands
 
-```cli
+All commands require a `call` function be passed, which is either `up`, `down` or `seed`. An optional `run` argument can be passed which informs upon a directory to run, this can be either `migrations` (`m` for short) or `functions` (`f` for short). The CLI accepts a couple flags.
 
-fauna-migrate up        Executes full migration, skips existing
-fauna-migrate down      Reverses a migration, and will remove data records
-fauna-migrate seed      Seeds a collection with some local referenced data
--c, --config  <path>    Run migrations using a fauna.migrate.js config file
--i, --input   <path>    Run specific migration located at the provided path
--r, --run     <ids>     A comma separated list of migrations to run
+> Please be cautious when using the `--force` flag, it will delete collections before re-creating them. It's dangerous and once passed there is no turning back, ie: you are fucked.
+
+```cli
+fauna-migrate up   <run>  Executes full migration, skips existing
+fauna-migrate down <run>  Reverses a migration, and will remove data records
+fauna-migrate seed        Seeds a collection with some local referenced data
+-c, --config  <path>      Run migrations using a config.json config file
+-d, --dir     <path>      Define a custom directory for migrations
+-r, --run     <ids>       A comma separated list of migrations to run
+-f, --force               Force migration, deletes collection, then recreates (DANGER ZONE)
+```
+
+### Examples
+
+The below command will execute a migration (creation). We have passed a runner argument of `m` which infers that we only wish run files located in the `migrations` directory. We have also passed a `--dir` flag and provided a value of `database` which infers that our migrations are contained within a directory named `database` (instead of the default `db`). The command will read all files located in `database/migrations`.
+
+```cli
+fauna-migrate up m --dir database
+```
+
+The below command will execute a forced migration. This is a dangerous call and needs to be used with caution because it will delete all migrations before re-creating them. Fauna has a 60 second time limit enforced, the CLI will show a timer upon deletion and once the time limit has complete it will continue execution.
+
+```cli
+fauna-migrate up --force
+```
+
+The below command will execute a forced migration on 2 migration contained within the `migrations` directory that have a filename of `bar.js` and `foo.js`. We also passed a `--dir` argument, which informs that our migrations are located within `src/db/migrations`.
+
+```cli
+fauna-migrate up m --dir src/db -r foo,bar --force
 ```
 
 ### Scripts
@@ -75,27 +99,27 @@ In your projects `package.json` file, create scripts in order to run migrations 
 ```json
 {
   "scripts": {
-    "db:up": "fauna-migrate up -i db/migrations",
-    "db:down": "fauna-migrate down -i db/migrations",
-    "db:functions": "fauna-migrate up -i db/functions",
-    "db:seed": "fauna-migrate seed -i db/seed"
+    "db:up": "fauna-migrate up",
+    "db:down": "fauna-migrate down",
+    "db:functions": "fauna-migrate up f",
+    "db:seed": "fauna-migrate seed"
   }
 }
 ```
 
 ### Config File
 
-Migrations can be executed according to a custom configuration. This is how we here at [Brixtol](https://brixtoltextiles.com) handle our migrations. You will need to pass the `-c` or `--config` flag in order to enable this and can optionally provide a config path (file). If the config path is unspecified fauna-migrate defaults to `db/fauna.migrate.js`.
+Migrations can be executed according to a custom configuration. This is how we here at [Brixtol](https://brixtoltextiles.com) handle our migrations. You will need to pass the `-c` or `--config` flag in order to enable this and can optionally provide a config path (file). If the config path is unspecified fauna-migrate defaults to `db/config.json`.
 
-> Please note that in order to use a config file, you must explicitly pass the `-c` or `--config` flag otherwise the `fauna.migrate.js` config file will be ignored.
+> Please note that in order to use a config file, you must explicitly pass the `-c` or `--config` flag otherwise the `config.json` config file will be ignored.
 
 ```ts
 import { config } from "@brixtol/fauna-migrate";
 
 export default config({
-  migrations: ["filename"], // exclude .js extension
-  seeds: ["filename"], // exclude .js extension
-  functions: ["filename"], // exclude .js extension
+  migrations: ["filename"],
+  seeds: ["filename"],
+  functions: ["filename"],
 });
 ```
 
@@ -107,53 +131,85 @@ We will name this file `products.js` and place it in the `db/migrations` directo
 
 <!-- prettier-ignore -->
 ```typescript
-import { query as q } from 'faunadb'
+import { migrate } from '@brixtol/fauna-migrate'
 
-export default {
-
-  /**
-   * Collection Migration
-   *
-   * This object is passed to the FQL `CreateCollection()` method.
-   */
-  Collection: {
-    name: 'products',
-    permissions: {
-      write: q.Collection('users')
-    }
-  },
-
-  /**
-   * Index Migrations
-   *
-   * Each object in the array is passed to the FQL `CreateIndex()` method.
-   */
-  Indexes: [
-    {
-      name: 'all_products',
-      source: q.Collection('products'),
+// The q parameter is the faunadb client instance
+export default migrate(
+  q => ({
+    /**
+     * Collection Migration
+     *
+     * This object is passed to the FQL `CreateCollection()` method.
+     */
+    Collection: {
+      name: 'products',
       permissions: {
-        read: q.Collection('users')
+        write: q.Collection('users')
       }
     },
-    {
-      name: 'products_by_channel',
-      source: q.Collection('products'),
-      unique: false,
-      serialized: true,
-      terms: [
-        { field: [ 'data', 'channel', 'shopify' ] },
-        { field: [ 'data', 'channel', 'åhlens' ] }
-      ]
-    }
-  ],
 
-  /**
-   * Function Migrations
-   *
-   * Each object in the array is passed to the FQL `CreateFunction()` method.
-   */
-  Functions: [
+    /**
+     * Index Migrations
+     *
+     * Each object in the array is passed to the FQL `CreateIndex()` method.
+     */
+    Indexes: [
+      {
+        name: 'all_products',
+        source: q.Collection('products'),
+        permissions: {
+          read: q.Collection('users')
+        }
+      },
+      {
+        name: 'products_by_channel',
+        source: q.Collection('products'),
+        unique: false,
+        serialized: true,
+        terms: [
+          { field: [ 'data', 'channel', 'shopify' ] },
+          { field: [ 'data', 'channel', 'åhlens' ] }
+        ]
+      }
+    ],
+
+    /**
+     * Function Migrations
+     *
+     * Each object in the array is passed to the FQL `CreateFunction()` method.
+     */
+    Functions: [
+      {
+        name: 'get_product_by_channel',
+        role: 'admin',
+        body: q.Query(
+          q.Lambda(
+            'channel'
+            , q.Match(
+              q.Index('products_by_channel')
+              , q.Var('channel')
+            )
+          )
+        )
+      }
+    ]
+  })
+)
+```
+
+### Creating Functions
+
+Fauna gives us the power of being able to compose functions. When working with complex datasets single file migrations like the one we created above can start to become extraneous and harder to maintain as they grow. Function migrations are helpful as we can provide Fauna function migrations as single file exports.
+
+> You may prefer to never write functions together with migrations and instead keep them isolated from one another. We tend to separate our function migrations from our collection and indexes migrations, there no enforced pattern here.
+
+<!-- prettier-ignore -->
+```typescript
+import { migrate } from '@brixtol/fauna-migrate'
+
+// The q parameter is the faunadb client instance
+export default migrate(
+  q =>([
     {
       name: 'get_product_by_channel',
       role: 'admin',
@@ -167,37 +223,14 @@ export default {
         )
       )
     }
-  ]
-}
-```
-
-### Creating Functions
-
-Fauna gives us the power of being able to compose functions. When working with complex datasets, single file migrations like we created above can start to become hard to keep track of as the become a larger and this is when function migrations are helpful as you provide them as single file exports.
-
-> You may prefer to never write functions together with migrations and instead keep them isolated from one another. We tend to separate our function migrations from our collection and indexes migrations, there no enforced pattern here.
-
-<!-- prettier-ignore -->
-```typescript
-import { query as q } from 'faunadb'
-
-export default [
-  {
-    name: 'get_product_by_channel',
-    role: 'admin',
-    body: q.Query(
-      q.Lambda(
-        'channel'
-        , q.Match(
-          q.Index('products_by_channel')
-          , q.Var('channel')
-        )
-      )
-    )
-  }
-]
+  ])
+)
 
 ```
+
+# Contributing
+
+Contributions are welcome. This project has been open sourced by us but exists as part of a private mono/multi repository. If you wish to contribute, please use [pnpm](https://pnpm.js.org/en/cli/install).
 
 ### License
 
