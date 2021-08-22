@@ -4,7 +4,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import filesize from 'rollup-plugin-filesize';
 import ts from 'rollup-plugin-typescript2';
 import typescript from 'typescript';
-import { config } from '@brixtol/rollup-utils';
+import { config, env } from '@brixtol/rollup-utils';
 
 export default Rollup({
   input: 'src/index.ts',
@@ -21,16 +21,18 @@ export default Rollup({
     'minimist',
     'chalk',
     'fs',
-    'path'
+    'path',
+    'ora'
   ],
-  plugins: [
+  plugins: env.if('dev')([
     ts({
       useTsconfigDeclarationDir: true,
       typescript
     }),
     commonjs({
       include: [ 'node_modules/faunadb' ]
-    }),
+    })
+  ])([
     terser({
       ecma: 2016,
       compress: {
@@ -38,5 +40,5 @@ export default Rollup({
       }
     }),
     filesize()
-  ]
+  ])
 });
