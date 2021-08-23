@@ -38,15 +38,31 @@
     "dev": "rollup -c -w",
     "build": "rollup -c --environment prod",
     "package": "cd versions; pnpm pack ../ && cd ..",
+    "test:lines": "ava --watch --verbose",
     "test": "ava --watch --verbose"
   },
+  "prettier": "@brixtol/prettier-config",
   "eslintConfig": {
-    "extends": "@brixtol/eslint-config-typescript"
+    "ignorePatterns": "package",
+    "extends": "@brixtol/eslint-config"
+  },
+  "ava": {
+    "files": [
+      "test/cli/lines.js"
+    ],
+    "concurrency": 5,
+    "require": [
+      "esm"
+    ]
+  },
+  "esm": {
+    "cjs": true
   },
   "devDependencies": {
-    "@brixtol/eslint-config-typescript": "workspace:^1.0.0",
-    "@brixtol/rollup-utils": "workspace:^0.2.0",
-    "@brixtol/tsconfig": "workspace:^1.0.0",
+    "@brixtol/eslint-config": "^1.0.1",
+    "@brixtol/prettier-config": "^1.0.3",
+    "@brixtol/rollup-utils": "^0.2.0",
+    "@brixtol/tsconfig": "^1.0.0",
     "@rollup/plugin-commonjs": "^20.0.0",
     "esm": "^3.2.25",
     "faunadb": "^4.3.0",
