@@ -1,6 +1,6 @@
 {
   "name": "@brixtol/fauna-migrate",
-  "version": "0.1.0-beta.1",
+  "version": "0.1.1-beta.1",
   "description": "A migration helper utility for populating a serverless Fauna database.",
   "author": {
     "name": "Νίκος Σαβίδης ",
@@ -9,9 +9,8 @@
   },
   "license": "MIT",
   "main": "./package/index.js",
-  "exports": {
-    "require": "./package/index.js"
-  },
+  "type": "module",
+  "exports": "./package/index.js",
   "types": "./package/@types/index.d.ts",
   "keywords": [
     "faunadb",
@@ -28,17 +27,19 @@
     "url": "https://github.com/brixtol/fauna-migrate"
   },
   "engines": {
-    "pnpm": ">=5"
+    "pnpm": ">=6",
+    "node": ">=14"
   },
   "bin": {
-    "fauna-migrate": "./bin/fauna-migrate"
+    "fauna-migrate": "./bin/fauna-migrate.js",
+    "fm": "./bin/fauna-migrate.js"
   },
   "scripts": {
-    "fauna-migrate": "./bin/fauna-migrate",
+    "fm": "./bin/fauna-migrate.js",
+    "fauna-migrate": "./bin/fauna-migrate.js",
     "dev": "rollup -c -w",
     "build": "rollup -c --environment prod",
     "package": "cd versions; pnpm pack ../ && cd ..",
-    "test:lines": "ava --watch --verbose",
     "test": "ava --watch --verbose"
   },
   "prettier": "@brixtol/prettier-config",
@@ -59,18 +60,13 @@
     "cjs": true
   },
   "devDependencies": {
-    "@brixtol/eslint-config": "^1.0.1",
-    "@brixtol/prettier-config": "^1.0.3",
-    "@brixtol/rollup-utils": "^0.2.0",
-    "@brixtol/tsconfig": "^1.0.0",
-    "@rollup/plugin-commonjs": "^20.0.0",
+    "@brixtol/eslint-config": "workspace:^1.0.1",
+    "@brixtol/prettier-config": "workspace:^1.0.3",
+    "@brixtol/rollup-config": "workspace:^1.0.0",
+    "@brixtol/tsconfig": "workspace:^1.0.1",
     "esm": "^3.2.25",
     "faunadb": "^4.3.0",
-    "rollup": "^2.56.2",
-    "rollup-plugin-filesize": "^9.1.1",
-    "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript2": "^0.30.0",
-    "typescript": "^4.3.5"
+    "typescript": "^4.4.2"
   },
   "peerDependencies": {
     "faunadb": "^4.3.0"
@@ -78,6 +74,6 @@
   "dependencies": {
     "chalk": "^4.1.2",
     "minimist": "^1.2.5",
-    "ora": "^5.4.1"
+    "ora": "^6.0.0"
   }
 }

@@ -228,6 +228,22 @@ export default migrate(
 
 ```
 
+# Known Issues
+
+This module is in its infant stages and there may be some breaking changes until a major version release. The package is not perfect yet, but should suffice for the vast majority of use cases. Below is some known issues and solutions you may encounter:
+
+### Regions
+
+For now, the tool will only work with Classic [Regions](https://docs.fauna.com/fauna/current/api/fql/region_groups#limitations), so ensure your database is using classic.
+
+### Collection Sorting Order
+
+If a migrations is referencing an unknown or yet to be generated collection, you will need to execute the migration call a second time because the CLI will execute in alphabetic order. You can use a `config.json` to infer a sorted execution order of migrations. This will be fixed in upcoming versions.
+
+### Persisted 60sec when using `--force` on combined migrations
+
+This is a known bug, will be fixed in upcoming releases.
+
 # Contributing
 
 Contributions are welcome. This project has been open sourced by us but exists as part of a private mono/multi repository. If you wish to contribute, please use [pnpm](https://pnpm.js.org/en/cli/install).
