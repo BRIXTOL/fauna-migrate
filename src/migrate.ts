@@ -1,8 +1,11 @@
 import chalk from 'chalk';
 import { basename } from 'path';
-import faunadb, { query as q } from 'faunadb';
+import faunadb from 'faunadb';
+import { log, error } from './log';
 import { IMigration, IFunction, IIndexes, ICollection, IConfig, Run } from './types';
 import ora, { Ora } from 'ora';
+
+const q = faunadb.query;
 
 /**
  * Async Timeout
@@ -22,8 +25,6 @@ function asyncTimer (spinner: Ora, ms = 61000): Promise<void> {
 
 };
 
-const { log, error } = console;
-
 async function doCollection (client: faunadb.Client, collection: ICollection, force: boolean) {
 
   if (force !== null) log(chalk`{cyan Creating Collection}`);
@@ -37,6 +38,7 @@ async function doCollection (client: faunadb.Client, collection: ICollection, fo
         await client.query(q.Delete(q.Collection(collection.name)));
 
       } catch (e) {
+
         if (e.description === `Ref refers to undefined collection '${collection.name}'`) {
           return doCollection(client, collection, null);
         }
@@ -240,6 +242,7 @@ export async function down (config: IConfig) {
   }
 
   if (config.run === Run.All || config.run === Run.Functions) {
+
     if (config.functions.length > 0) {
 
       for (const file of config.functions) {

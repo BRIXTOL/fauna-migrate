@@ -1,9 +1,10 @@
 import chalk from 'chalk';
 import { basename } from 'path';
-import faunadb, { query as q } from 'faunadb';
+import faunadb from 'faunadb';
 import { IConfig } from './types';
+import { log, error } from './log';
 
-const { log, error } = console;
+const q = faunadb.query;
 
 /**
  * UP
