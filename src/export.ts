@@ -1,14 +1,14 @@
-import { query } from 'faunadb';
+import faunadb from 'faunadb';
 import { IMigration, IFunction } from './types';
 
-export function migrate (fn: (q: typeof query) => IMigration | IFunction[]) {
+export function migrate (fn: (q: typeof faunadb.query) => IMigration | IFunction[]) {
 
-  return fn(query);
+  return fn(faunadb.query);
 
 }
 
-export function seed (fn: (q: typeof query) => any[]) {
+export function seed (fn: (q: typeof faunadb.query) => any[]) {
 
-  return fn(query);
+  return fn(faunadb.query);
 
 }
