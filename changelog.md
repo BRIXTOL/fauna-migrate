@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.1.2-beta.1 - 28/08/2021
+
+- Updated Readme
+
 ### 0.1.1-beta.1 - 28/08/2021
 
 This release improves upon several aspects and adds additional features to its stack. It ships with a breaking change to the CLI `--run` flag. Full summary below

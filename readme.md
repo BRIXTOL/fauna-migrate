@@ -6,7 +6,7 @@ A migration CLI helper utility for populating [FaunaDB](https://fauna.com/) data
 
 # Install
 
-This module has a peer dependency on the [faunadb](https://www.npmjs.com/package/faunadb) JavaScript driver, please ensure you have it installed.
+This module has a peer dependency on the [faunadb](https://www.npmjs.com/package/faunadb) JavaScript driver, please ensure you have it installed. Also, it is probably worth noting that this is an [ESM](https://nodejs.org/api/esm.html) module.
 
 ```cli
 pnpm add @brixtol/fauna-migrate --save-dev
@@ -58,38 +58,54 @@ The module provides a basic cli for executing the migrations. You should avoid i
 
 ### Commands
 
-All commands require a `call` function be passed, which is either `up`, `down` or `seed`. An optional `run` argument can be passed which informs upon a directory to run, this can be either `migrations` (`m` for short) or `functions` (`f` for short). The CLI accepts a couple flags.
+By default, fauna-migrate will call `up` and accepts either `up`, `down`, `seed` or `help` as first argument commands, these instruct the module on what action it should preform. An optional `run` argument can be passed which informs upon a directory to run within your migrations `db` directory, this can be either `migrations` (`m` for short) or `functions` (`f` for short).
+
+The CLI accepts a couple flags and provides some additional features:
+
+```cli
+Aliases:
+  fauna-migrate  You can also call this instead in-place of fm
+
+Commands:
+  fm up   <run>  Executes full migration, skips existing (default)
+  fm down <run>  Reverses a migration, and will remove data records
+  fm seed        Seeds a collection with some local referenced data
+  fn help        Prints command list information (same as -h and --help)
+Options:
+  m, migrations <flags>  Run on migrations directory
+  f, functions  <flags>  Run on functions directory
+
+Flags:
+  -c, --config  Run migrations from a config.json config file
+  -h, --help    Prints command list information (same as fm help)
+  -d, --dir     <path>  Define a custom directory for migrations
+  -i, --input   <list>  A comma separated list of migrations to run
+
+Danger Zone:
+  --force   Force migration, deletes collection then re-migrates
+            BEWARE! Using force will remove data from your database.
+```
 
 > Please be cautious when using the `--force` flag, it will delete collections before re-creating them. It's dangerous and once passed there is no turning back, ie: you are fucked.
 
-```cli
-fauna-migrate up   <run>  Executes full migration, skips existing
-fauna-migrate down <run>  Reverses a migration, and will remove data records
-fauna-migrate seed        Seeds a collection with some local referenced data
--c, --config  <path>      Run migrations using a config.json config file
--d, --dir     <path>      Define a custom directory for migrations
--r, --run     <ids>       A comma separated list of migrations to run
--f, --force               Force migration, deletes collection, then recreates (DANGER ZONE)
-```
-
 ### Examples
 
-The below command will execute a migration (creation). We have passed a runner argument of `m` which infers that we only wish run files located in the `migrations` directory. We have also passed a `--dir` flag and provided a value of `database` which infers that our migrations are contained within a directory named `database` (instead of the default `db`). The command will read all files located in `database/migrations`.
+The below command will execute a migration (creation), as mentioned the CLI will default calls to `up` so it can be omitted. We have passed a runner argument of `m` which infers that we only wish to run files located in the `migrations` directory. We have also passed a `--dir` flag and provided a value of `database`, this infers that our migrations are contained within a directory named `database` (instead of the default `db`). The command will read all files located in `database/migrations`.
 
 ```cli
-fauna-migrate up m --dir database
+fm m --dir database
 ```
 
 The below command will execute a forced migration. This is a dangerous call and needs to be used with caution because it will delete all migrations before re-creating them. Fauna has a 60 second time limit enforced, the CLI will show a timer upon deletion and once the time limit has complete it will continue execution.
 
 ```cli
-fauna-migrate up --force
+fm up --force
 ```
 
-The below command will execute a forced migration on 2 migration contained within the `migrations` directory that have a filename of `bar.js` and `foo.js`. We also passed a `--dir` argument, which informs that our migrations are located within `src/db/migrations`.
+The below command will execute a forced migration on 2 migrations contained within the `migrations` directory that have a filename of `bar.js` and `foo.js` which we have provided following the `-i` (short for `--input`) flag which allows us to select specific files within a defined runner directory. We also passed the `--dir` flag and again, as our previous example show, it informs that our migrations are located within `src/db/migrations`.
 
 ```cli
-fauna-migrate up m --dir src/db -r foo,bar --force
+fm up m --dir src/db -i foo,bar --force
 ```
 
 ### Scripts
@@ -99,13 +115,15 @@ In your projects `package.json` file, create scripts in order to run migrations 
 ```json
 {
   "scripts": {
-    "db:up": "fauna-migrate up",
-    "db:down": "fauna-migrate down",
-    "db:functions": "fauna-migrate up f",
-    "db:seed": "fauna-migrate seed"
+    "db:up": "fm up",
+    "db:down": "fm down",
+    "db:functions": "fm up f",
+    "db:seed": "fm seed"
   }
 }
 ```
+
+> Remember if you need to separate arguments in a node env, use triple dashes, eg: `---` this will help prevent fauna-migrate commands from being ran as executables.
 
 ### Config File
 
@@ -129,6 +147,8 @@ Migrations are just basic objects. Each migration requires a `Collection` refere
 
 We will name this file `products.js` and place it in the `db/migrations` directory, relative to our cwd root. When we are defining a migration that is creating a collection, it is good practice to keep these files in one place.
 
+> All migrations have detailed typings with JSDoc annotations to describe using the same information found within FaunaDB documentation.
+
 <!-- prettier-ignore -->
 ```typescript
 import { migrate } from '@brixtol/fauna-migrate'
@@ -136,6 +156,7 @@ import { migrate } from '@brixtol/fauna-migrate'
 // The q parameter is the faunadb client instance
 export default migrate(
   q => ({
+
     /**
      * Collection Migration
      *
@@ -199,9 +220,9 @@ export default migrate(
 
 ### Creating Functions
 
-Fauna gives us the power of being able to compose functions. When working with complex datasets single file migrations like the one we created above can start to become extraneous and harder to maintain as they grow. Function migrations are helpful as we can provide Fauna function migrations as single file exports.
+Fauna gives us the power of being able to compose functions. When working with complex datasets single file migrations like the one we created above can start to become extraneous and harder to maintain over time. Function migrations are helpful as we can provide Fauna function migrations as single file exports.
 
-> You may prefer to never write functions together with migrations and instead keep them isolated from one another. We tend to separate our function migrations from our collection and indexes migrations, there no enforced pattern here.
+> You may prefer to never write functions together with migrations and instead keep them isolated from one another. We tend to separate our function migrations from our collection and indexes migrations. There no enforced pattern here, do as you wish and be as you are.
 
 <!-- prettier-ignore -->
 ```typescript
@@ -228,9 +249,13 @@ export default migrate(
 
 ```
 
+### Creating Seeds
+
+Seeding is provided but needs a little extra work, you can take peek into the test/db directory to get a glance, but expect changes to come.
+
 # Known Issues
 
-This module is in its infant stages and there may be some breaking changes until a major version release. The package is not perfect yet, but should suffice for the vast majority of use cases. Below is some known issues and solutions you may encounter:
+This module is in its infant stages and there may be some breaking changes until a major version release. The package is not perfect (yet), but should suffice for the vast majority of use cases. Below is some known issues and solutions of what you may encounter:
 
 ### Regions
 
@@ -243,6 +268,10 @@ If a migrations is referencing an unknown or yet to be generated collection, you
 ### Persisted 60sec when using `--force` on combined migrations
 
 This is a known bug, will be fixed in upcoming releases.
+
+### Iteratable Execution (Internal)
+
+The module populates a fauna database in an iterable process. This is an internal aspect and something I am aware of (author here). This can be a little more elegant. When I first put this together I was coming off a heavy weekend of partying, so my mind was little cooked. In upcoming versions this logic will change and instead the faunadb driver `Do()` method will be leveraged.
 
 # Contributing
 
