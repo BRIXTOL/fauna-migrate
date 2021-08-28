@@ -4,71 +4,88 @@ import { readdirSync, existsSync, readFileSync } from 'fs';
 import chalk from 'chalk';
 import { up, down } from './migrate';
 import { seed } from './seed';
+import { help, log, error } from './log';
 import { IArgv, IConfig, IConfigFile, Run } from './types';
 
 function usingConfig (file: IConfigFile, config: IConfig, argv: IArgv) {
 
-  const filterFiles = (
-    prop: 'functions' | 'migrations' | 'seeds'
-  ) => (item: string) => {
+  const files = (prop: 'functions' | 'migrations' | 'seeds') => (item: string) => {
 
     const path = resolve(
       argv.dir,
       prop,
-      item.slice(-3) === '.js'
-        ? item
-        : item + '.js'
+      item.slice(-3) === '.js' ? item : `${item}.js`
     );
 
     if (!existsSync(path)) {
-      console.error(
-        chalk`{red Missing ${prop.slice(0, -1)} at} '{yellow ${prop}/${basename(path)}}'`
-      );
+      const base = basename(path);
+      error(chalk`{red Missing ${prop.slice(0, -1)} at} '{yellow ${prop}/${base}}'`);
     }
 
     return path;
+
   };
 
   if (file?.functions?.length > 0) {
-    config.functions = file.functions.map(filterFiles('functions'));
+    config.functions = file.functions.map(files('functions'));
   }
 
   if (file?.migrations?.length > 0) {
-    config.migrations = file.migrations.map(filterFiles('migrations'));
+    config.migrations = file.migrations.map(files('migrations'));
   }
 
   if (file?.seeds?.length > 0) {
-    config.seeds = file.seeds.map(filterFiles('seeds'));
+    config.seeds = file.seeds.map(files('seeds'));
   }
 
-  const [ call ] = argv._;
-
-  if (call === 'up') return up(config);
-  if (call === 'down') return down(config);
-  if (call === 'seed') return seed(config);
+  switch (argv.call) {
+    case 'up':
+      return up(config);
+    case 'down':
+      return down(config);
+    case 'seed':
+      return seed(config);
+  }
 
 }
 
-export function command (args: string[]) {
+/**
+ * Reads the `.faunarc` file located in projects root.
+ * Parses the file with simple regex returning secret
+ * if found, else false if missing.
+ */
+function readFaunarc (cwd: string): false | string {
 
-  const cwd = process.cwd();
   const faunarc = resolve(cwd, '.faunarc');
 
   if (!existsSync(faunarc)) {
-    return console.error(chalk`{red Missing} {cyan .faunarc} {red file}\n`);
+    error(chalk`{red Missing {cyan .faunarc} file}\n`);
+    return false;
   }
 
   const contents = readFileSync(faunarc).toString();
   const secret = contents.match(/\bFAUNA_KEY\s*=\s*([A-Za-z0-9_-]+)(?=\s?)/);
 
   if (secret === null) {
-    return console.error(chalk`\n{red Missing {cyan FAUNA_KEY} in {cyan .faunarc} file}\n`);
+    error(chalk`\n{red Missing {cyan FAUNA_KEY} in {cyan .faunarc} file}\n`);
+    return false;
   }
 
+  return secret[1];
+
+}
+
+export function command (args: string[]) {
+
+  const cwd = process.cwd();
+  const secret = readFaunarc(cwd);
+
+  if (!secret) return;
+
   const config: IConfig = {
+    secret,
     run: Run.All,
     force: false,
-    secret: secret[1],
     config: false,
     migrations: [],
     functions: [],
@@ -76,22 +93,33 @@ export function command (args: string[]) {
   };
 
   const argv: IArgv = minimist(args, {
-    default: { c: false, f: false },
-    boolean: [ 'c', 'f' ],
-    string: [ 'd', 'r' ],
+    default: {
+      c: false,
+      force: false,
+      help: false
+    },
+    boolean: [ 'c', 'h' ],
+    string: [ 'd', 'f' ],
     alias: {
       dir: 'd',
       config: 'c',
       run: 'r',
-      force: 'f'
+      files: 'f',
+      help: 'h'
     }
   });
 
-  const [ call, run ] = argv._;
+  argv.call = argv._[0] || 'up';
+  argv.run = argv._[1] || '';
 
-  if (!/\b(up|down|seed)\b/.test(call)) {
+  // Show Help
+  if (argv.help || argv.call === 'help') {
+    return log(help);
+  }
+
+  if (!/\b(up|down|seed)\b/.test(argv.call)) {
     return console.error(
-      chalk`\n{red Invalid argument of} {cyan ${call}} {red was passed.}`,
+      chalk`\n{red Invalid argument of} {cyan ${argv.call}} {red was passed.}`,
       chalk`\n{red Accepts only {white up}, {white down} {red or} {white seed}}\n`
     );
   }
@@ -105,7 +133,7 @@ export function command (args: string[]) {
   }
 
   if (!existsSync(argv.dir)) {
-    return console.error(
+    return error(
       chalk`{red The} {cyan ./${basename(argv.dir)}} {red directory does not exist}\n`
     );
   }
@@ -113,9 +141,7 @@ export function command (args: string[]) {
   const dirs = readdirSync(argv.dir);
 
   if (!dirs.length) {
-    return console.error(
-      chalk`{yellow No migration sub-directories detected}\n`
-    );
+    return error(chalk`{yellow No migration sub-directories detected}\n`);
   }
 
   config.force = argv.force;
@@ -125,16 +151,23 @@ export function command (args: string[]) {
     const configFile = resolve(argv.dir, 'config.json');
 
     if (!existsSync(configFile)) {
-      return console.error(
+      return error(
         chalk`{red Missing} {cyan config.json}} {red configuration file}\n`
       );
     }
 
     const read = readFileSync(configFile).toString();
-    const file = JSON.parse(read);
 
-    return usingConfig(file, config, argv);
+    try {
 
+      const file = JSON.parse(read);
+
+      return usingConfig(file, config, argv);
+
+    } catch (e) {
+
+      throw new Error(e);
+    }
   }
 
   for (const dir of dirs) {
@@ -146,85 +179,107 @@ export function command (args: string[]) {
     }
   }
 
-  if (call === 'up' || call === 'down') {
+  if (argv.call === 'up' || argv.call === 'down') {
 
-    if (run) {
+    if (argv.run) {
 
-      if (!/\b(migrations|functions|f|m)\b/.test(run)) {
-        return console.error(
-          chalk`\n{red Invalid argument of} {cyan ${run}} {red was passed.}`,
-          chalk`\n{red Accepts {white migrations (m)} {red or} {white functions (f)}}\n`
+      if (!/\b(|f|m|migrations|functions)\b/.test(argv.run)) {
+        return error(
+          chalk`\n{red Invalid argument of {cyan ${argv.run}} was passed}`,
+          chalk`\n{red Accepts {white migrations (m)} or {white functions (f)}}\n`
         );
       }
 
-      if (run === 'm' || run === 'migrations') {
+      if (argv.run === 'm' || argv.run === 'migrations') {
+
         if (!config.migrations.length) {
-          return console.error(chalk`{red No migration/s exist}\n`);
-        } else {
-          config.run = Run.Migrations;
+          return error(chalk`{red No migration/s exist}\n`);
         }
-      } else if (run === 'f' || run === 'functions') {
+
+        config.run = Run.Migrations;
+
+      } else if (argv.run === 'f' || argv.run === 'functions') {
+
         if (!config.migrations.length) {
-          return console.error(chalk`{red No functions/s exist}\n`);
-        } else {
-          config.run = Run.Functions;
+          return error(chalk`{red No functions/s exist}\n`);
         }
+
+        config.run = Run.Functions;
       }
 
     } else {
-      if (argv.run && dirs.includes('functions')) {
-        return console.error(
-          chalk`\n{red Directory runner is missing, you need to inform upon a directory when}`,
-          chalk`\n{red using the {cyan -r} or {cyan --run} flag, for example:}\n`,
-          chalk`\n  {white fauna-migrate up {cyan migrations} -r file1,file2}`,
-          chalk`\n  {white fauna-migrate up {cyan functions} -r file1,file2}`,
-          chalk`\n  {white fauna-migrate up {cyan m} -r file1,file2}`,
-          chalk`\n  {white fauna-migrate up {cyan f} -r file1,file2}\n`
+
+      if (argv.input && dirs.includes('functions')) {
+
+        return error(
+          chalk`\n{red Directory to run is missing, you need to inform upon a directory when}`,
+          chalk`\n{red using the {cyan -i} or {cyan --input} flag, for example:}\n`,
+          chalk`\n  {white fauna-migrate up {cyan migrations} -i file1,file2}`,
+          chalk`\n  {white fauna-migrate up {cyan functions} -i file1,file2}`,
+          chalk`\n  {white fauna-migrate up {cyan m} --input file1.js}`,
+          chalk`\n  {white fauna-migrate up {cyan f} -i file1,file2}\n`
         );
       }
     }
   }
 
-  if (argv.run) {
+  if (argv.input) {
 
-    const runFilter = (arr: string[]) => (item: string) => arr.includes(basename(item));
+    const files = argv.input
+      .split(',')
+      .map(file => file.slice(-3) !== '.js' ? `${file}.js` : file);
 
-    const files = argv.run.split(',').map(file => {
-      if (file.slice(-3) !== '.js') return file + '.js';
-      else return file;
-    });
+    if (argv.call === 'seed') {
 
-    if (call === 'seed') {
       config.seeds = config.migrations.filter(i => files.includes(i));
+
       if (!config.seeds.length) {
-        return console.error(
+
+        return error(
           chalk`\n{red No matching seeds:}\n`,
-          chalk`\n{cyan ${argv.run.split(',').join('\n')}}\n`
+          chalk`\n{cyan ${argv.input.split(',').join('\n')}}\n`
         );
       }
+
     } else {
+
+      const runFilter = (arr: string[]) => (i: string) => arr.includes(basename(i));
+
       if (config.run === Run.Migrations || config.run === Run.All) {
+
         config.migrations = config.migrations.filter(runFilter(files));
+
         if (!config.migrations.length) {
-          return console.error(
+
+          return error(
             chalk`\n{red No matching migrations:}\n`,
-            chalk`\n{cyan ${argv.run.split(',').join('\n')}}\n`
+            chalk`\n{cyan ${argv.input.split(',').join('\n')}}\n`
           );
         }
+
       } else if (config.run === Run.Functions) {
+
         config.functions = config.functions.filter(runFilter(files));
+
         if (!config.functions.length) {
-          return console.error(
+
+          return error(
             chalk`\n{red No matching functions:}\n`,
-            chalk`\n{cyan ${argv.run.split(',').join('\n')}}\n`
+            chalk`\n{cyan ${argv.input.split(',').join('\n')}}\n`
           );
         }
+
       }
     }
   }
 
-  if (call === 'up') return up(config);
-  if (call === 'down') return down(config);
-  if (call === 'seed') return seed(config);
+  switch (argv.call) {
+    case 'up':
+      return up(config);
+    case 'down':
+      return down(config);
+    case 'seed':
+      return seed(config);
+  }
 
 }
