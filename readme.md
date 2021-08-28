@@ -9,7 +9,7 @@ A migration CLI helper utility for populating [FaunaDB](https://fauna.com/) data
 This module has a peer dependency on the [faunadb](https://www.npmjs.com/package/faunadb) JavaScript driver, please ensure you have it installed.
 
 ```cli
-pnpm i @brixtol/fauna-migrate --save-dev
+pnpm add @brixtol/fauna-migrate --save-dev
 ```
 
 > Because [pnpm](https://pnpm.js.org/en/cli/install) is dope and does dope shit.
