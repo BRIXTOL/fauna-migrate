@@ -4,12 +4,16 @@ export interface IArgv {
   _: string[],
   c?: string,
   d?: string,
-  f?: boolean,
+  f?: string,
+  h?: boolean,
   r?: string,
   dir?: string,
   config?: string
-  run?: string
+  input?: string
   force?: boolean
+  help?: boolean,
+  call?: string,
+  run?: string
 }
 
 export const enum Run {
