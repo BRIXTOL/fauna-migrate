@@ -17,7 +17,7 @@ export async function seed (config: IConfig) {
 
     for (const file of config.seeds) {
 
-      let seeds = require(file);
+      let seeds = await import(file).then(m => m.default);
 
       log(chalk`\n{green Seeding}: {bold.greenBright ${basename(file)}}\n`);
 

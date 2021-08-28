@@ -163,7 +163,7 @@ export async function up (config: IConfig) {
   if (config.run !== Run.Functions) {
     for (const file of config.migrations) {
 
-      const migration: IMigration = require(file).default;
+      const migration: IMigration = await import(file).then(m => m.default);
 
       log(chalk`\n{green Migration}: {bold.greenBright ${basename(file)}}\n`);
 
@@ -184,7 +184,7 @@ export async function up (config: IConfig) {
   if (config.run === Run.All || config.run === Run.Functions) {
     if (config.functions.length > 0) {
       for (const file of config.functions) {
-        const migration: IFunction[] = require(file).default;
+        const migration: IFunction[] = await import(file).then(m => m.default);
         await doFunctions(client, migration, config.force);
       }
     }
@@ -201,7 +201,7 @@ export async function down (config: IConfig) {
 
     for (const file of config.migrations) {
 
-      const migration: IMigration = require(file).default;
+      const migration: IMigration = await import(file).then(m => m.default);
 
       try {
 
@@ -247,7 +247,7 @@ export async function down (config: IConfig) {
 
       for (const file of config.functions) {
 
-        const functions: IFunction[] = require(file).default;
+        const functions: IFunction[] = await import(file).then(m => m.default);
 
         log(chalk`\n{redBright Function}: {bold.redBright ${basename(file)}}`);
 
