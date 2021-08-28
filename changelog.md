@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.1.3-beta.1 - 28/08/2021
+
+- Fixed dynamic requires
+
 ### 0.1.2-beta.1 - 28/08/2021
 
 - Updated Readme
