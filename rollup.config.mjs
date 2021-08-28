@@ -1,44 +1,62 @@
-import { defineConfig as Rollup } from 'rollup';
-import { terser } from 'rollup-plugin-terser';
-import commonjs from '@rollup/plugin-commonjs';
-import filesize from 'rollup-plugin-filesize';
-import ts from 'rollup-plugin-typescript2';
+import { rollup, config, env, plugin } from '@brixtol/rollup-config';
 import typescript from 'typescript';
-import { config, env } from '@brixtol/rollup-utils';
 
-export default Rollup({
-  input: 'src/index.ts',
-  output: [
-    {
-      format: 'cjs',
-      file: config.output.cjs,
-      exports: 'named',
-      sourcemap: process.env.prod ? false : 'inline'
-    }
-  ],
-  external: [
-    'faunadb',
-    'minimist',
-    'chalk',
-    'fs',
-    'path',
-    'ora'
-  ],
-  plugins: env.if('dev')([
-    ts({
-      useTsconfigDeclarationDir: true,
-      typescript
-    }),
-    commonjs({
-      include: [ 'node_modules/faunadb' ]
-    })
-  ])([
-    terser({
-      ecma: 2016,
-      compress: {
-        passes: 2
+export default rollup(
+  {
+    input: 'src/index.ts',
+    output: [
+      {
+        format: 'esm',
+        file: config.output.main,
+        exports: 'named',
+        sourcemap: env.is('dev', 'inline')
       }
-    }),
-    filesize()
-  ])
-});
+    ],
+    external: [
+      'faunadb',
+      'minimist',
+      'chalk',
+      'fs',
+      'path',
+      'ora',
+      'console'
+    ],
+    plugins: env.if('dev')(
+      [
+        plugin.replace(
+          {
+            preventAssignment: true,
+            delimiters: [ '<!', '!>' ],
+            values: {
+              version: config.package.version
+            }
+          }
+        ),
+        plugin.ts(
+          {
+            useTsconfigDeclarationDir: true,
+            typescript
+          }
+        ),
+        plugin.commonjs(
+          {
+            requireReturnsDefault: 'preferred',
+            transformMixedEsModules: true
+          }
+        )
+      ]
+    )(
+      [
+        plugin.terser(
+          {
+            ecma: 2016,
+            compress: {
+              passes: 2
+            }
+          }
+        ),
+        plugin.filesize()
+      ]
+    )
+  }
+);
