@@ -15,7 +15,7 @@ export const { log, error } = new Console({
 export const help = chalk`
   {gray ------------------------------------------------------------------------}
 
-  {bold.blueBright 🚢 Fauna Migration CLI Utility}
+  {bold.blueBright 🚢 FaunaDB Migration CLI Utility}
 
   {bold Version:}
     <!version!>
@@ -45,6 +45,6 @@ export const help = chalk`
   {gray ------------------------------------------------------------------------}
 
   Fauna:    https://fauna.com
-  Github:   https://github.com/BRIXTOL/fauna-migrate
+  Github:   https://github.com/brixtol/fauna-migrate
 
 `;
