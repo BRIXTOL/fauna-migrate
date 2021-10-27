@@ -269,7 +269,7 @@ If a migrations is referencing an unknown or yet to be generated collection, you
 
 This is a known bug, will be fixed in upcoming releases.
 
-### Iteratable Execution (Internal)
+### Iterable Execution (Internal)
 
 The module populates a fauna database in an iterable process. This is an internal aspect and something I am aware of (author here). This can be a little more elegant. When I first put this together I was coming off a heavy weekend of partying, so my mind was little cooked. In upcoming versions this logic will change and instead the faunadb driver `Do()` method will be leveraged.
 
