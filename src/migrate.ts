@@ -7,6 +7,14 @@ import ora, { Ora } from 'ora';
 
 const q = faunadb.query;
 
+async function getModule (path: string) {
+
+  const file = await import(path);
+
+  return file.default;
+
+}
+
 /**
  * Async Timeout
  */
@@ -163,7 +171,7 @@ export async function up (config: IConfig) {
   if (config.run !== Run.Functions) {
     for (const file of config.migrations) {
 
-      const migration: IMigration = await import(file).then(m => m.default);
+      const migration: IMigration = await getModule(file);
 
       log(chalk`\n{green Migration}: {bold.greenBright ${basename(file)}}\n`);
 
@@ -184,7 +192,7 @@ export async function up (config: IConfig) {
   if (config.run === Run.All || config.run === Run.Functions) {
     if (config.functions.length > 0) {
       for (const file of config.functions) {
-        const migration: IFunction[] = await import(file).then(m => m.default);
+        const migration: IFunction[] = await getModule(file);
         await doFunctions(client, migration, config.force);
       }
     }
@@ -201,7 +209,7 @@ export async function down (config: IConfig) {
 
     for (const file of config.migrations) {
 
-      const migration: IMigration = await import(file).then(m => m.default);
+      const migration: IMigration = await getModule(file);
 
       try {
 
@@ -247,7 +255,7 @@ export async function down (config: IConfig) {
 
       for (const file of config.functions) {
 
-        const functions: IFunction[] = await import(file).then(m => m.default);
+        const functions: IFunction[] = await getModule(file);
 
         log(chalk`\n{redBright Function}: {bold.redBright ${basename(file)}}`);
 

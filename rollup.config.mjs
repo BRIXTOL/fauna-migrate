@@ -9,7 +9,15 @@ export default rollup(
         format: 'esm',
         file: config.output.main,
         exports: 'named',
-        sourcemap: env.is('dev', 'inline')
+        sourcemap: env.is('dev', 'inline'),
+        inlineDynamicImports: true
+      },
+      {
+        format: 'cjs',
+        file: config.output.cjs,
+        exports: 'named',
+        sourcemap: env.is('dev', 'inline'),
+        inlineDynamicImports: true
       }
     ],
     external: [
@@ -18,11 +26,21 @@ export default rollup(
       'chalk',
       'fs',
       'path',
-      'ora',
-      'console'
+      'console',
+      'readable-stream'
     ],
+    treeshake: 'smallest',
     plugins: env.if('dev')(
       [
+        plugin.replace(
+          {
+            preventAssignment: true,
+            values: {
+              'node:readline': 'readline',
+              'node:process': 'process'
+            }
+          }
+        ),
         plugin.replace(
           {
             preventAssignment: true,
@@ -32,7 +50,19 @@ export default rollup(
             }
           }
         ),
-        plugin.ts(
+        plugin.json(
+          {
+            compact: true,
+            preferConst: true
+          }
+        ),
+        plugin.resolve(
+          {
+            extensions: [ '.ts', '.js' ],
+            preferBuiltins: true
+          }
+        ),
+        plugin.ts2(
           {
             useTsconfigDeclarationDir: true,
             typescript

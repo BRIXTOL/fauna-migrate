@@ -227,7 +227,9 @@ export function command (args: string[]) {
 
     const files = argv.input
       .split(',')
-      .map(file => file.slice(-3) !== '.js' ? `${file}.js` : file);
+      .map(file => (
+        file.slice(-3) !== '.js' ? `${file}.js` : file
+      ));
 
     if (argv.call === 'seed') {
 

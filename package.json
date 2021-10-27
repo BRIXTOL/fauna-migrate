@@ -8,9 +8,11 @@
     "url": "https://brixtoltextiles.com"
   },
   "license": "MIT",
-  "main": "./package/index.js",
-  "type": "module",
-  "exports": "./package/index.js",
+  "main": "./package/index.mjs",
+  "exports": {
+    "require": "./package/index.cjs",
+    "import": "./package/index.mjs"
+  },
   "types": "./package/@types/index.d.ts",
   "keywords": [
     "faunadb",
@@ -31,12 +33,12 @@
     "node": ">=14"
   },
   "bin": {
-    "fauna-migrate": "./bin/fauna-migrate.js",
-    "fm": "./bin/fauna-migrate.js"
+    "fauna-migrate": "./bin/index.js",
+    "fm": "./bin/index.js"
   },
   "scripts": {
-    "fm": "./bin/fauna-migrate.js",
-    "fauna-migrate": "./bin/fauna-migrate.js",
+    "fm": "./bin/index.js",
+    "fauna-migrate": "./bin/index.js",
     "dev": "rollup -c -w",
     "build": "rollup -c --environment prod",
     "package": "cd versions; pnpm pack ../ && cd ..",
@@ -61,19 +63,18 @@
   },
   "devDependencies": {
     "@brixtol/eslint-config": "workspace:^1.0.1",
-    "@brixtol/prettier-config": "workspace:^1.0.3",
-    "@brixtol/rollup-config": "workspace:^1.0.0",
+    "@brixtol/prettier-config": "workspace:^1.2.0",
+    "@brixtol/rollup-config": "workspace:^1.4.0",
     "@brixtol/tsconfig": "workspace:^1.0.1",
-    "esm": "^3.2.25",
-    "faunadb": "^4.3.0",
-    "typescript": "^4.4.2"
-  },
-  "peerDependencies": {
-    "faunadb": "^4.3.0"
+    "typescript": "^4.4.4"
   },
   "dependencies": {
     "chalk": "^4.1.2",
+    "esm": "^3.2.25",
     "minimist": "^1.2.5",
-    "ora": "^6.0.0"
+    "ora": "^6.0.1"
+  },
+  "optionalDependencies": {
+    "faunadb": "^4.4.1"
   }
 }
