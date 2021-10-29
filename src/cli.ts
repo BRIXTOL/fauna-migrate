@@ -75,7 +75,7 @@ function readFaunarc (cwd: string): false | { secret: string, domain: string } {
 
   return {
     secret: secret[1],
-    domain: region === null ? 'db.fauna.com' : region[0]
+    domain: region === null ? 'db.fauna.com' : region[1]
   };
 
 }
@@ -86,6 +86,8 @@ export function command (args: string[]) {
   const faunarc = readFaunarc(cwd);
 
   if (!faunarc) return;
+
+  console.log(faunarc);
 
   const config: IConfig = {
     ...faunarc,
