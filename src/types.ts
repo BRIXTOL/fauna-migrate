@@ -24,6 +24,7 @@ export const enum Run {
 
 export interface IConfig {
   secret: string,
+  domain: string,
   force: boolean,
   config: boolean | string,
   run: Run

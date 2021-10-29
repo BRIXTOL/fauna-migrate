@@ -54,7 +54,7 @@ function usingConfig (file: IConfigFile, config: IConfig, argv: IArgv) {
  * Parses the file with simple regex returning secret
  * if found, else false if missing.
  */
-function readFaunarc (cwd: string): false | string {
+function readFaunarc (cwd: string): false | { secret: string, domain: string } {
 
   const faunarc = resolve(cwd, '.faunarc');
 
@@ -71,19 +71,24 @@ function readFaunarc (cwd: string): false | string {
     return false;
   }
 
-  return secret[1];
+  const region = contents.match(/\bFAUNA_REGION\s*=\s*(db\.(?:us|eu)\.fauna\.com)(?=\s?)/);
+
+  return {
+    secret: secret[1],
+    domain: region === null ? 'db.fauna.com' : region[0]
+  };
 
 }
 
 export function command (args: string[]) {
 
   const cwd = process.cwd();
-  const secret = readFaunarc(cwd);
+  const faunarc = readFaunarc(cwd);
 
-  if (!secret) return;
+  if (!faunarc) return;
 
   const config: IConfig = {
-    secret,
+    ...faunarc,
     run: Run.All,
     force: false,
     config: false,

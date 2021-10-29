@@ -22,6 +22,14 @@ Supply your fauna secret key in a `.faunarc` file. The `.faunarc` file must exis
 FAUNA_KEY = secret
 ```
 
+### Fauna Regions
+
+If your Fauna database region is not using classic then you can pass the domain as an environment variable. If no region is defined it will default to classic.
+
+```env
+FAUNA_REGION = db.eu.fauna.com
+```
+
 > If you are using the [fauna vscode extension](https://marketplace.visualstudio.com/items?itemName=fauna.fauna), you may already have this file.
 
 # Directory Structure
@@ -132,12 +140,12 @@ Migrations can be executed according to a custom configuration. This is how we h
 > Please note that in order to use a config file, you must explicitly pass the `-c` or `--config` flag otherwise the `config.json` config file will be ignored.
 
 ```ts
-import { config } from "@brixtol/fauna-migrate";
+import { config } from '@brixtol/fauna-migrate';
 
 export default config({
-  migrations: ["filename"],
-  seeds: ["filename"],
-  functions: ["filename"],
+  migrations: ['filename'],
+  seeds: ['filename'],
+  functions: ['filename']
 });
 ```
 

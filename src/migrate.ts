@@ -161,7 +161,8 @@ async function doFunctions (client: faunadb.Client, functions: IFunction[], forc
 export async function up (config: IConfig) {
 
   const client = new faunadb.Client({
-    secret: config.secret
+    secret: config.secret,
+    domain: config.domain
   });
 
   if (config.force) {
@@ -203,7 +204,10 @@ export async function up (config: IConfig) {
 
 export async function down (config: IConfig) {
 
-  const client = new faunadb.Client({ secret: config.secret });
+  const client = new faunadb.Client({
+    secret: config.secret,
+    domain: config.domain
+  });
 
   if (config.run !== Run.Functions) {
 
